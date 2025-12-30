@@ -1,0 +1,72 @@
+{
+  "headline": "Restaurant-Performance Optimierung",
+  "areas_of_excellence": [
+    {
+      "theme": "Freundlichkeit",
+      "area": "Service",
+      "what_to_keep": "Die vielfältige Freundlichkeit und die Bereitschaft, mit Kunden wie Natalia zu arbeiten trotz der Sprachbarriere."
+    },
+    {
+      "theme": "Warm Ambiente",
+      "area": "Management & Service",
+      "what_to_keep": "Das warm eingeführte Umfeld, das ein angenehmes Einkaufserlebnis bietet (wie durch den Mitarbeiter der Wärme deutlich wird)."
+    },
+    {
+      "theme": "sehr hohe Freundlichkeit",
+      "area": "Service",
+      "what_to_keep": "Review erwähnt ein 'Sehr höfliches Personal', was darauf hinweist eine positive Erfahrung mit dem Servicepersonal."
+    },
+    {
+      "theme": "sehr schnell zubereitet und sehr sauber",
+      "area": "Kitchen|Service",
+      "what_to_keep": "Review sagt 'Sein Jede Leitung' schnell zubereitet, was darauf hinweist eine positive Erfahrung mit den Küchenleistungen."
+    },
+    {
+      "theme": "Servicefreundlichkeit",
+      "area": "Personal",
+      "what_to_keep": "Das Personal ist super freundlich und bemüht"
+    },
+    {
+      "theme": "Positive Kundeerfahrung durch Interaktion",
+      "area": "Service",
+      "what_to_keep": "Kunden haben sich über unerwartete positive Erlebnisse bei der Bestellung im Verkaufsbereich freuen können"
+    },
+    {
+      "theme": "Gesundheitssicherheit",
+      "area": "Kitchen",
+      "what_to_keep": "Bewahren Sie die Frische und Sorgfalt im Service bei.",
+      "how_to_market_it": "Führen Sie mit einer starken Botschaft von Qualität, Sauberkeit und Gesundheitssicherheit."
+    }
+  ],
+  "areas_of_improvement": [
+    {
+      "theme": "Bestellzeit",
+      "area": "Service",
+      "what_to_fix": "Die langsame Bestellabwicklung, die zu Unzufriedenheit führt.",
+      "suggested_action": "Optimierung des Serviceprozesses zur Reduzierung von Orderzeiten."
+    },
+    {
+      "theme": "Essensqualität",
+      "area": "Service & Kitchen",
+      "what_to_fix": "Die katastrophale Qualität der Bestellungen, die zu einem schlechten Einkaufserlebnis führt.",
+      "suggested05action": "Verbesserung des Essensqualitätsmanagements in der Küche und bei den Mitarbeitern."
+    },
+    {
+      "theme": "Bezahlbare Zufriedenheit",
+      "area": "Service & Management",
+      "suggested_action": "Fortbildung für das Personal zur Verbesserung der Kommunikation und des Serviceansatzes."
+    }
+  ],
+  "quick_wins_next_7_days": [
+    "Verbessern Sie die Essensqualität durch zusätzliche Qualitätsmanagementmaßnahmen.",
+    "Implementieren oder Verbesserung der Bestellprozesse zur Verringerung von Wartezeiten."
+  ],
+  "longer_term_30_days": [
+    "Einführung einer minimalen Serviceautomaten-System für bessere Kundenerfahrungen.",
+    "Erstellen eines einfachen Anmelde/Treuebezeichnungsverfahren zur Verbesserung der langfristigen Zufriedenheit."
+  ],
+  "suggested_kpis": [
+    "Verbesserte Bestellzeiten",
+    "Steigerungen in den Treustufen von Kunden"
+  ]
+}
