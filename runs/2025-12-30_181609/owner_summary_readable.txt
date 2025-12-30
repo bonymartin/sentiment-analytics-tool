@@ -1,0 +1,66 @@
+Subject: Weekly Review Summary — Pizza House — 2025-12-30
+
+Strategische Restaurantverbesserung basierend auf Feedback und Stärken — Pizza House
+Model: phi3.5
+Run date: 2025-12-30 18:16
+
+DATA SNAPSHOT
+• Reviews analyzed: 31
+• Overall sentiment (Fused avg): -0.40  (-1 to +1)
+• Sentiment (Fused): Positive=8, Neutral=0, Negative=23
+• Stars: 1★=12, 2★=5, 3★=4, 4★=5, 5★=5
+
+TOP STRENGTHS (keep & promote)
+1. [Management] Positive Atmosphäre
+   Keep: Der Ort ist sehr freundlich, die Personalmitarbeiter präsentieren sich positiv.
+   Promote: Hervorheben unserer einladenden und herzlichen Umgebung in Marketingmaterialien.
+2. [Service] Freundliches Personale
+   Keep: Sehr freundliche Mitarbeiter bringen eine positive Erfahrung für die Gäste und Personal ist super fröhlich.
+   Promote: Highlighten unserer hervorragenden, engagierten Teamkultur in Marketingmaterialien.
+3. [Service|Kitchen] sehr hörbares Personal, sehr sauberes Ambiente
+   Keep: Beibehalten und standardisieren.
+   Promote: Erstellen einer Marketingstrategie, die unsere saubere Präsentation betont.
+
+TOP ISSUES (prioritized)
+1. [Service] Bestellgeschwindigkeit und Genauigkeit
+   Fix: Probleme mit Bestell-Katastrophenempfehlungen.
+   Action: Implementierung zusätzlicher Schulungen zur Verbesserung der Bestellgenauigkeit und Anforderungen an Rufservice.
+2. [Service & Management] Temperaturkontrolle im Außenbereich
+   Fix: Keine Klimaanlage während heißer Tage mit vollständig ausgelasteten Außendosenbussen.
+   Action: Erwägen der Bereitstellung von Kühlungssystemen für den Komfort im Ausgehbereich bei hohen Temperaturen.
+3. [Management & Service] Kundenbindungsprogramm und Self-Service Terminals
+   Fix: Absence eines Kundenbindungsprogramms mit Kronen und kein Selbstorder Terminal verfügbar.
+   Action: Ersetzen des Systems durch ein funktionelles Programm zur Aufrechterhaltung der Kontakte, sowie Integration von Self-Service Terminals für die Bestellungen.
+4. [Service & Management] Qualität des Essens bei Lieferangeboten
+   Fix: Katastrophales Essenerlebnis aufgrund von Bestellungen über App oder Dritte-Firmen.
+   Action: Revision der Lieferungsmethoden und -qualität, um das Mahlzeitzustande zu verbessern.
+5. [Service|Mgmt] Wiederholung einer Bestellanfrage
+   Fix: Unzählige Wiederholungen der gleichen Bestellanfrage ohne Erklärung oder Alternativoption.
+   Action: Einführung klarer und flexibler Prozeduren zur Bearbeitung wiederkehrender Anfragen.
+
+RECURRING QUOTES (from extraction)
+• Positive:
+  - "La chica que nos ha atendido (Natalia) ha sido muy paciente con nosotros pese a la diferencia de idioma." (2x)
+  - "Service sehr nett und Aufmerksam" (2x)
+  - "Unser Stamm-Burger mit positivem Kommentar ('" (1x)
+• Negative:
+  - "Katastrophenbestellempfehlung aufgrund vermutlich schlechter Geschmack, Temperatur oder Frische" (1x)
+  - "Katastrophale Bestellgenauigkeit und Anforderungen an Ruf-Service fehlen" (1x)
+  - "Hatte danach Bauchweh" (1x)
+
+ACTION PLAN
+• Quick wins (next 7 days):
+  - Implementierung zusätzlicher Schulungen zur Verbesserung der Bestellgenauigkeit und Anforderungen an Rufservice.
+  - Erwägen der Bereitstellung von Kühlungssystemen für den Komfort im Ausgehbereich bei hohen Temperaturen.
+  - Ersetzen des Systems durch ein funktionelles Programm zur Aufrechterhaltung der Kontakte, sowie Integration von Self-Service Terminals für die Bestellungen.
+• Longer term (next 30 days):
+  - Revision der Lieferungsmethoden und -qualität, um das Mahlzeitzustande zu verbessern.
+  - Einführung klarer und flexibler Prozeduren zur Bearbeitung wiederkehrender Anfragen.
+
+KPIs TO TRACK (simple)
+• Average Wait Time (Min.) — Timer: 20 Bestellungen pro Schicht messen.
+• Order Accuracy (%) — Stichprobe: 30 Bestellungen/Woche prüfen.
+• Food Quality Rating (1–5) — QR-Umfrage auf Bon / Tischaufsteller.
+• Cleanliness Checklist Score — Tägliche Checkliste + wöchentliches Audit.
+
+Generated on: 2025-12-30 18:27

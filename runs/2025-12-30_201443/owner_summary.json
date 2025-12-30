@@ -1,0 +1,93 @@
+{
+  "headline": "Strategische Priorisierung für Restaurant-Exzellenz und Verbesserungsmaßnahmen basierend auf Kundenbewertungen von Burger King",
+  "areas_of_excellence": [
+    {
+      "theme": "Freundlichkeit und Wohlbefinden",
+      "area": "Service/Management",
+      "what_to_keep": "Sehr freundliche Mitarbeiter, positive Atmosphäre hervorgerufen durch das Zitat 'Absoluter Saftladen, geht hier auf keinen Fall essen' und hohe Unterstützung bei der Bearbeitung von Kundenbeschwerden",
+      "how_to_market_it": "'Wir setzen unsere erzielten Ruf als vorbildliche Serviceeinheit in unserer Marketingstrategie fort, mit einem besonderen Schwerpunkt auf Empathie und professionelle Unterstützung von Mitarbeitern."
+    },
+    {
+      "theme": "Ambiente Hervorrufung",
+      "area": "Mgmt/Service",
+      "what_tothy": "Essenswärme hervorgehoben, erweckt ein Gefühl von Wärme und Komfort für die Kunden."
+    },
+    {
+      "theme": "Sehr höfliches Personal",
+      "area": "Service",
+      "what_tothy": "Das Essenzieren hochstehendes, sauberes Servicepersonal mit superfreundlichen Eigenschaften ist ein wichtiger Bestandteil der Kundenerfahrung."
+    },
+    {
+      "theme": "Qualität des Essens",
+      "what_tothy": "Kunde erwarten hochwertige Produkte, was Burger King-Standard zu sein scheint. Die Qualitätserhaltung ist entscheidend für die Kundenzufriedenheit."
+    },
+    {
+      "theme": "Customer Service",
+      "what_tothy": "Emphatische und professionelle Unterstützung von Mitarbeitern bei der Bearbeitung von Beschwerden sind ein Schlüsselfaktor für den Restaurant-Ruf, besonders in einem starken Fokus auf Empathie."
+    }
+  ],
+  "areas_of_improvement": [
+    {
+      "theme": "Bestellzeitmanagement",
+      "what_tofix": "Lange Bestellzeiten und falsche Zubereitung von Essen, was zu Kundenunzufriedenheit führt."
+    },
+    {
+      "theme": "Falsches Einschätzen des Essens",
+      "what_tofix": "Qualitätssicherung erfordert eine höhere Aufmerksamkeit bei Zubereitung und Präsentation von Speisen, um sicherzustellen, dass Kunden Erwartungen erfüllen."
+    },
+    {
+      "theme": "Einbeziehungsproblem",
+      "what_tofix": "Der Fehlen einer effizienten Kommunikationslinie zwischen Personal und Gästen zur Lösung von Problemen, was eine Verbesserung erfordert."
+    },
+    {
+      "theme": "Mangel an klaren Bestellmöglichkeiten im Drive-In",
+      "what_tofix": "Klare Menüoptionen mit spezifischen Gerichten und einen einfachen Prozess für die Abgabe von Bestellungen sind unerlässlich."
+    },
+    {
+      "theme": "Ungünstige Kostenstruktur",
+      "what_tofix": "Die Prüfung der Preisgestaltung, um sicherzustellen, dass sie fair für die angebotenen Mengen sind und den Erwartungen entsprechen."
+    },
+    {
+      "theme": "Unzureichende Sauberkeit",
+      "what_tofix": "Verbesserung der gesamten Reinigungsqualität sowohl im Service- als auch in Kitchenbereich, um einen sauberen und professionellen Look zu gewährleisten."
+    },
+    {
+      "theme": "Atmosphäre vs. Preisgestaltungssynergie",
+      "what_tofix": "Bessere Ausrichtung der Speisenqualität mit Preissätzen, um das Essenserlebnis und den Wahrnehmung des Restaurants zu verbessern."
+    },
+    {
+      "theme": "Reinigungssorglosigkeit",
+      "what_tofix": "Strenge Hygieneprotokolle eingeführt werden müssen, um die Sauberkeit und organisatorische Struktur des Restaurants zu verbessern."
+    },
+    {
+      "theme": "Unzureichende Handhabung Eingewiesener",
+      "what_tofix": "Effizientere Bestellausführungsprozesse durch Investition in Technologie und zusätzliches Training für das Servicepersonal zu erleichtern."
+    },
+    {
+      "theme": "Kommunikation zwischen Restaurantleitung",
+      "what_tofix": "Ein offenerer Kommunikationskultur gefördert werden muss, um positive Management-/Preisaspekte präsentieren und Feedback zur Verbesserung annehmen zu können."
+    },
+    {
+      "theme": "Food Quality",
+      "what_tofix": "Frische Zubereitung aller Lebensmittel mit Betonungs auf Altplappenausschluss, um die Essensqualität sicherzustellen und Rückschlüsse zu ziehen."
+    },
+    {
+      "theme": "Customer Service zur Complaint Bearbeitung",
+      "what_tofix": "Besser vorbereitet sein auf rücksichtsvolle Reaktionen, mit einem Fokus darauf Empathie und konstruktiv zum Feedback beizutragen."
+    }
+  ],
+  "quick_wins_next_7_days": [
+    "Implementierung von Klare Bestellmöglichkeiten im Drive-In",
+    "Unterweisung des Personals bei der Reaktion auf Beschwerden und Empathie für den Servicekundenfluss."
+  ],
+  "longer_term_30_days": [
+    "Besser Organisation von Reinigungsprozessen zur Verbesserung der Sauberkeit",
+    "Aktualisierung des Menüs mit klaren und spezifischen Optionen, um die Bestellzeit zu beschleunigen"
+  ],
+  "suggested_kpis": [
+    "Reduzierte Kundenzufriedenheit bei Problemen im Service",
+    "Zunehmender positiver Tenor in Feedback von Mitarbeitern und Gästen zur Verbesserung der Kommunikation zwischen Restaurantleitungssitzungen.",
+    "Erhöhte Auslastung durch effizientere Bestellausführungsprozesse",
+    "Verbesserter Erwartungshorizont an Essenerlebnis basierend auf den Qualitätsverbesserungen der Speisen"
+  ]
+}

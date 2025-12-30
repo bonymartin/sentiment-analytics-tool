@@ -1,0 +1,31 @@
+{
+  "headline": "Restaurant Performance and Improvement Analysis for Owner-Advisor",
+  "areas_of_excellence": [
+    {
+      "theme": "Freundlichkeit",
+      "area": "Service",
+      "what_to_keep": "Sehr freundliche Mitarbeiter, wie Natalia beschrieben.",
+      "how_to_market_it": "Promote the highly friendly service team as a key part of your brand experience."
+    },
+    {
+      "theme": "Warmes Ambiente",
+      "area": "Mgmt+ & Atmosphere, specifically for drive-in dining.",
+      "how_to_market_it": "Highlight the cozy and inviting ambiance that caters to heating needs during hot days."
+    },
+    {
+      "theme": "Personal",
+      "area": "Service & Atmosphere, applicable across all dining experiences.",
+      "how_to_market_it": "Advertise the consistently high level of friendliness and clean service to attract new customers."
+    },
+    {
+      "theme": "Essen Qualität",
+      "area": "Kitchen, applicable for all types of orders.",
+      "how_to_market_it": "Promote the consistently good quality food across various platforms and within customer testimonials."
+    },
+    {
+      "theme": "Pleasantly Surprised Human Interaction",
+      "area": "Service, applicable during order interactions.",
+      "how_to_market_it: Promote the positive human interaction experiences as a differentiator from automated service options elsewhere.": 10
+    }
+  ]
+}

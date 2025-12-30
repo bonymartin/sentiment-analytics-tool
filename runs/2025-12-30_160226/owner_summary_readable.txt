@@ -1,0 +1,39 @@
+{
+  "headline": "Restaurant-Performance und Verbesserungsgebiete Zusammenfassung",
+  "areas_of_excellence": [
+    {
+      "theme": "Freundliches Personal",
+      "area": "Service",
+      "what_to_keep": "Sehr freundliche Mitarbeiter, wie im ersten Review erwähnt und Höflichkeit des Personals gefeiert."
+    },
+    {
+      "theme": "Sauberkeit",
+      "area": "Kitchen|Service|Management",
+      "how_to_market_it": "Für unsere sauberen und hygienischen Umgebung gewinnen wir die Kundenvertrauen.",
+      "evidence": [
+        "Sehr sauber"
+      ]
+    },
+    {
+      "theme": "Schnell Zubereitung",
+      "area": "Kitchen|Service",
+      "how_to_market_it": "Unsere Effizienz im Restaurantservice gewinnen Sie mit uns schnell zubereitet Essen.",
+      "evidence": [
+        "sehr schnell zubereitet"
+      ]
+    }
+  ],
+  "areas_ofsuggestedaction: [,],": "",
+  "quick_wins_next_7_days": [
+    "Implementieren Sie regelmäßige Reinigungsroutinen sowohl im Innen- als auch Außenbereich zur Verbesserung der Sauberkeit.",
+    "Verbessern Sie die Kommunikation und Bestellverständigung zwischen Kunden und Bedienstellen, um Wiederaufnahmevorgänge zu reduzieren."
+  ],
+  "longer_term_30_days": [
+    "Optimierung des Systems zur Reduzierung von Waitzeiten im gesamten Bestellprozess.",
+    "Revision der Preisgestaltung für Zusatzangebote wie Mayo, um Fairness und Kundenzufriedenheit sicherzustellen."
+  ],
+  "suggested_kpis": [
+    "Zeit zu Bestellungen reduziert",
+    "Zunahme an Wiederaufnahmevorgängen senken"
+  ]
+}

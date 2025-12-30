@@ -1,0 +1,34 @@
+{
+  "headline": "Key Strengths and Areas for Improvement as a Restaurant Owner",
+  "areas_of_excellence": [
+    {
+      "theme": "Freundlichkeit",
+      "area": "Service & Management",
+      "what_to_keep": "Sehr freundliche Mitarbeiter und ein sehr netter Ton sowie personalisiertes Kunden-Servelementsystem."
+    },
+    {
+      "theme": "Kitchen Quality of Food",
+      "area": "Quality in the kitchen",
+      "what_to_keep": "High quality food that is well received by customers.",
+      "how_to_market_it": "Promote your high caliber dishes as signature items or chef's specials."
+    },
+    {
+      "theme": "Service Attention to Detail",
+      "area": "Customer Service",
+      "what_to_keep": "Niceties in personal interactions, like being super friendly and pleasantly surprising customers during service encounters.",
+      "how_to_market_it": "Highlight these positive human interaction experiences on your restaurant's social media pages or website to attract more guests."
+    },
+    {
+      "theme": "Courteous Personal Interaction",
+      "area": "Service",
+      "what_to_keep": "Positive personal interactions during order process, where the waiter is friendly and attentive.",
+      "how_to_market_it": "Promote these positive service encounters through customer testimonials or video content on your online platforms."
+    },
+    {
+      "theme": "Improved Customer Service Reaction",
+      "area": "Management",
+      "what_to_keep": "'Unsachgemäßer' Kundenservice reaction which can be turned into an opportunity for improvement. This implies there is scope to improve service efficiency and responsiveness.",
+      "how_to_market_it": "Promote your efforts towards improving customer engagement through personalized services, quick response times etc."
+    }
+  ]
+}

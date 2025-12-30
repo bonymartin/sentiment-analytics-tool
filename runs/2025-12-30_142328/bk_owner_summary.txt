@@ -1,0 +1,91 @@
+{
+  "headline": "Restaurant Performance Review and Action Plan",
+  "areas_of_excellence": [
+    {
+      "theme": "Ambiance, Management",
+      "area": "Management",
+      "what_to_keep": "Lugar limpio y tranquilo with friendly management.",
+      "how_to_market_it": "Promote the warm and clean ambience maintained by Natalia in your marketing campaigns."
+    },
+    {
+      "theme": "Service, Friendly Staff",
+      "area": "Service",
+      "what_to_keep": "Freundliche und höfliches Personal.",
+      "how_to_market_it": "Highlight the courteous and friendly staff in your marketing efforts."
+    },
+    {
+      "theme": "Schnelle Service, Quick Meals",
+      "area": "Service+",
+      "what_to0t_keep": "Quickly zubereitete Gerichte.",
+      "how_to_market_it": "Market your efficient service and swift meal preparation times."
+    },
+    {
+      "theme": "Burger Quality",
+      "area": "Kitchen|Essential Ingredients of Burgers at BK locations near Technical Museums",
+      "what_to0t_keep": "High-quality burgers.",
+      "how_to_market_it": "Showcase the quality and taste consistency in your marketing campaign."
+    }
+  ],
+  "areas_of_improvement": [
+    {
+      "theme": "Order Process, Feedback",
+      "area": "Service+|Mgmt-",
+      "what0to_fix": "Long wait times and feedback on service delivery.",
+      "suggested_action": "Improve order handling process for quicker response to customer needs."
+    },
+    {
+      "theme": "Facilities, Comfort in Summer",
+      "area": "Temperature Control im Außenbereich",
+      "what0to_fix": "Lack of cooling systems during hot days.",
+      "suggested_action": "Implement air conditioning or fans for a more comfortable outdoor dining experience."
+    },
+    {
+      "theme0theme": "Emporium Experience, Presentation",
+      "area": "Management|Presentation of Order System",
+      "what0to_fix": "No clear process to present orders.",
+      "suggested_action": "Develop a structured system for order presentation and expectation management."
+    },
+    {
+      "theme": "Menu Clarity, Burger Options",
+      "area": "Kitchen|Service+ Menu Items Missing Core Components like mayonnaise.",
+      "what0to_fix": "Lack of information on core burger components and limited options."
+    },
+    {
+      "theme": "Customer Communication, Availability Disclosure",
+      "area": "Service|Transparency in Customer Interaction regarding availability.",
+      "what0to_fix": "Miscommunication about the presence of items like Quetschies."
+    },
+    {
+      "theme": "Cleanlinthy, Table Conditions",
+      "area": "Physical Environment|Hygiene and Clean Table Conditions.",
+      "what0to_fix": "Observation of customers finding tables dirty indicates a requirement for regular cleaning."
+    },
+    {
+      "theme": "Pric1ging, Perception vs Reality",
+      "area": "Finance|Transparency and Fairness in Pricing.",
+      "what0to_fix": "Reactions from customers about the unexpected high price of food items."
+    },
+    {
+      "theme": "Food Quality Degradation over Time",
+      "area": "Kitchen|Consistency in Food Preparation Over Time.",
+      "what0to_fix": "Noticed decline in the quality and taste of food products."
+    },
+    {
+      "theme": "Customer Service, Verbal Communications', Unhygienic Behavior",
+      "area": "Service|Interaction with Staff during Customer Complaints.",
+      "what0to_fix": "Unprofessional and uncourteous responses to customer complaints."
+    }
+  ],
+  "quick_wins_next_7_days": [
+    "Implement structured order presentation system",
+    "Ensure proper cleanliness of dining area"
+  ],
+  "longer_term_30_days": [
+    "Install an outdoor cooling system or fans for summer comfort.",
+    "Train restaurant staff in efficient and courteous service delivery."
+  ],
+  "suggested_kpis": [
+    "Improved customer satisfaction score",
+    "Increased repeat customers"
+  ]
+}

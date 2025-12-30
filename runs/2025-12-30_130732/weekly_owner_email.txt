@@ -1,0 +1,69 @@
+Subject: Weekly Restaurant Review Report — 2025-12-30
+
+Restaurant-Qualitätsüberblick und Verbesserungsmöglichkeiten
+Run date: 2025-12-30 13:07
+
+DATA SNAPSHOT (this run)
+• Reviews analyzed: 26
+• Overall sentiment (VADER avg): -0.34  (-1 to +1)
+• Sentiment buckets: Positive=2, Neutral=12, Negative=12
+• Star distribution: 1★=11, 2★=4, 3★=3, 4★=3, 5★=5
+
+AREAS OF EXCELLENCE (keep & promote)
+1. [Service] Freundlichkeit und Positive Atmosphäre
+   Keep: Sehr freundliche Mitarbeiter, positive Bedienungston.
+   Promote: Fokus auf die Freundlichkeit der Mitarbeiter und positiven Erlebnisse in den Marketingmaterialien
+
+2. [Management] Warmes Ambiente ohne Klimaanlage
+   Keep: Die Einrichtung hat ein warm-feuchtes Gefühl, trotz fehlender Klimaanlage.
+   Promote: Hervorhebung des charakteristischen Warmgefühls der Filialumgebung in den Marketingstrategien
+
+3. [Service] Freundliche Bedienung
+   Keep: Die Service wird als sehr nett und aufmerksam beschrieben.
+   Promote: Fokusieren Sie darauf, das freundliche Personal in Marketingmaterialien zu zeigen, um die Kundenbindung zu erhöhen.
+
+4. [Service] freundliches Personal
+   Keep: Superfreiwillig freundliche Personalkonstellation hervorzuheben.
+   Promote: Marketing der warmherzigen und hilfsbereiten Einstellung des Teams zur Schärfe.
+
+
+AREAS OF IMPROVEMENT (prioritized)
+1. [Service] Zeitaufwand und Bestellabwicklung
+   Fix: Dauer der Lieferando-Bestellung, die zu Problemen bei Bedienungsqualität führte.
+   Action: Verbesserungen in der Effizienz des Bestellmanagementsystems und Schulungen für Mitarbeiter zur Verbesserung ihrer Bearbeitungsgeschwindigkeit
+
+2. [Kitchen] Qualität des Essens
+   Fix: Problemen generalisiert bei der Vorbereitung, was zu negativem Feedback und Lachen führt.
+   Action: 
+
+3. [Service] Bedienungsfehler
+   Fix: Fehlende Aufmerksamkeit und Bedienfehler bei der Bestellabwicklung.
+   Action: 
+
+4. [Service] Preise
+   Fix: Schockierende Preiskalkulation ansprechen.
+   Action: 
+
+5. [Service] Serviceerlebnis
+   Fix: Verbesserung der allgemeinen Servicequalität.
+   Action: 
+
+6. [Kitchen] Menüangebot
+   Fix: Reevaluierung und Erweiterung des Menüs.
+   Action: 
+
+
+QUICK WINS (next 7 days)
+• Implementierung eines Trainingsprogramms für Mitarbeiter, um ihre Bedienungsqualität zu verbessern.
+• Kostenkontrolle zur Neukalkulation von Preisen.
+
+LONGER TERM (next 30 days)
+• Überprüfung und Verbesserungen des Bestellmanagementsystems für die Effizienzsteigerung.
+• Verbesserte Kommunikation durch Trainings zur Steigerung der Servicequalität.
+
+SUGGESTED KPIs TO TRACK
+• Steigerung von Kundenzufriedenheitswerten
+• Erhöhung des Umsatzes im Vergleich zu den Vorquartalen
+
+Generated on: 2025-12-30 13:17
+Tip: Store each week’s JSON + CSV to build trends in a dashboard.

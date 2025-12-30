@@ -1,0 +1,65 @@
+Subject: Weekly Review Summary — Pizza House — 2025-12-30
+
+Key Strengths and Opportunities for Improvement in Restaurant Operations — Pizza House
+Model: phi3.5
+Run date: 2025-12-30 16:14
+
+DATA SNAPSHOT
+• Reviews analyzed: 31
+• Overall sentiment (VADER avg): -0.29  (-1 to +1)
+• Sentiment: Positive=5, Neutral=12, Negative=14
+• Stars: 1★=12, 2★=5, 3★=4, 4★=5, 5★=5
+
+TOP STRENGTHS (keep & promote)
+1. [Management] Atmosphere
+   Keep: Sehr freundliches Personal mit positivem interpersonellem Touch und starkes Ambiente
+   Promote: In Google/Online-Bewertungen hervorheben.
+2. [Kitchen] Kochqualität des Essens
+   Keep: Beibehalten und standardisieren.
+   Promote: In Google/Online-Bewertungen hervorheben.
+3. [Service] sehr hohe Freundlichkeit
+   Keep: Sehr höfliches Personal
+   Promote: In Google/Online-Bewertungen hervorheben.
+
+TOP ISSUES (prioritized)
+1. [Kitchen] Service Speed and Accuracy
+   Fix: Lange Bestellzeiten und falsche Zubereitung von Speisen
+   Action: Owner festlegen, 1 KPI definieren, 7 Tage messen und nachjustieren.
+2. [Kitchen] Ordering System
+   Fix: Fehlende Selbstorder-Terminals und kein Kundenbindungsprogramm mit Krone, was den Bedienungsweg unbequem macht.
+   Action: Bestellwege vereinfachen (Kasse/Terminal/App), klare Beschilderung + Mitarbeiterhilfe in Stoßzeiten.
+3. [Kitchen] Temperature Control
+   Fix: Keine Klimaanlage in heißen Tagen, was zu Unbehagen für die Gäste führt.
+   Action: Owner festlegen, 1 KPI definieren, 7 Tage messen und nachjustieren.
+4. [Kitchen] Bestellmanagement
+   Fix: Bedauerliche Fehler bei der Bestellung, mit anschließenden Ausbrüchen von Gelächter aufgrund katastrophaler Qualität des Essens.
+   Action: Wartezeit messen (Ziel z.B. <4 Min), Engpass identifizieren (Kasse/Abholung/Küche) und Peak-Schichten verstärken.
+5. [Service] Bestellverständnis and Communication
+   Fix: Keine Bestellgenauigkeit und schlechte Kommunikation bei der Menüauswahl.
+   Action: Wartezeit messen (Ziel z.B. <4 Min), Engpass identifizieren (Kasse/Abholung/Küche) und Peak-Schichten verstärken.
+
+RECURRING QUOTES (from extraction)
+• Positive:
+  - "Essen war gut" (3x)
+  - "Liebevolle Kommunikation (';-)'), n/a, n/a, n/a, n/a, n/a" (1x)
+  - "La chica que nos ha atendido (Natalia) ha sido muy paciente con nosotros pese a la diferencia de idioma." (1x)
+• Negative:
+  - "Restaurant sieht etwas trostlos aus. All in all würde ich dieses Restaurant nicht empfehlen." (1x)
+  - "Katastrophen bei der Bestellung und fehlende Aufmerksamkeit" (1x)
+  - "Lack of self-service options and lack of participation in loyalty program" (1x)
+
+ACTION PLAN
+• Quick wins (next 7 days):
+  - Implementierung eines leichtfüßigen Self Ordering System oder Einführung digitaler Bestellungen
+  - Trainieren des Personals zur Verbesserung der Effizienz im Restaurantdienst
+• Longer term (next 30 days):
+  - Investition in Mitarbeiterschulungen', 'Stellen Sie sicher, dass alle Lebensmittel regelmäßig auf ihre Frische überprüft werden
+  - suggested_kpis
+
+KPIs TO TRACK (simple)
+• Average Wait Time (Min.) — Timer: 20 Bestellungen pro Schicht messen.
+• Order Accuracy (%) — Stichprobe: 30 Bestellungen/Woche prüfen.
+• Food Quality Rating (1–5) — QR-Umfrage auf Bon / Tischaufsteller.
+• Cleanliness Checklist Score — Tägliche Checkliste + wöchentliches Audit.
+
+Generated on: 2025-12-30 16:28

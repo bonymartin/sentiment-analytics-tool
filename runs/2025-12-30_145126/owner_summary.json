@@ -1,0 +1,94 @@
+{
+  "headline": "Implementierungsplan für Restaurantverbesserungen und Quick Wins",
+  "areas_of_excellence": [
+    {
+      "theme": "Freundliches Personal",
+      "area": "Service",
+      "what_to_keep": "Sehr freundliche Mitarbeiter",
+      "how_to_market_it": "Fokus auf das angenehme, freundliche Umfeld sowie die positiven Rückmeldungen zum Standort"
+    },
+    {
+      "theme": "Kochfähigkeiten und Kochgeschick",
+      "area": "Kitchen",
+      "what_to_keep": "Die Essensqualität wird als 'sehr gut' beschrieben.",
+      "how_to_market_it": "Hervorhebung der Kochfähigkeiten und -erfahrung"
+    },
+    {
+      "theme": "Service",
+      "area": "Service",
+      "what_to_keep": "Der Service wird als 'sehr nett' beschrieben.",
+      "how_to_market_it": "Fokus auf Freundlichkeit und Gastfreundschaft des Personals"
+    },
+    {
+      "theme": "Sauberkeit",
+      "area": "Service",
+      "what_to_keep": "Die Sauberkeit wird in verschiedenen Rezensionen erwähnt.",
+      "how_to_market_it": "Fokus auf die Hygiene und saubere Umgebung"
+    }
+  ],
+  "areas_of_improvement": [
+    {
+      "theme": "Bestellzeit, Genauigkeit",
+      "area": "Service",
+      "what_to_fix": "Unsere Bestellungen haben lange gedauert und wurden trotz mehrmaliger Wiederholung falsch zubereitet.",
+      "suggested_action": "Sicherstellen von Genauigkeit in der Bestellkommandoübernahme, Qualitätsprüfung vor dem Servieren"
+    },
+    {
+      "theme": "Klimaanlage und Außenbereich",
+      "area": "Management/Gastronomie-Erscheinungsbild",
+      "what_to_fix": "Keine Klimaanlage, überfüllter Außenbereich für heiße Tage",
+      "suggested_action": "Einrichtung einer passenden Klimatechnik und Organisation von Patrouillierkommandos zur Aufrechterhaltung des Komfortniveaus"
+    },
+    {
+      "theme": "Mangel an Kundenbindungsprogrammen",
+      "area": "Management",
+      "what_to_fix": "Kein Kundenbindungsprogramm mit Kronen, was potenzielle Wiederkäuermöglichkeiten verhindert",
+      "suggested_action": "Implementierung eines Rewards-Programms zur Förderung der regelmäßigen Besuche"
+    },
+    {
+      "theme": "Verständnisprobleme bei Bestellungen",
+      "area": "Service",
+      "what_to_fix": "Kunden müssen mehrmals Aufmerksamkeit schenken, um ihre Bestellungen korrekt zu beschreiben.",
+      "suggested_action": "Training des Personals zur Verbesserung der Kommunikation und Verständnisfähigkeit bei Bestellanweisungen"
+    },
+    {
+      "theme": "Lange Wartezeiten",
+      "area": "Service",
+      "what_to_fix": "'Mayo kostet ab der ersten Tüte Extra', lange Waitzeit auf Essen (z.B. 30 Minuten)",
+      "suggested_action": "Umsetzung von Maßnahmen zur Reduzierung der Servicezeiten, z.B. durch mehr Personal oder verbesserte Abläufe"
+    },
+    {
+      "theme": "Mangel an Menüoptionen für Außenumkehr",
+      "area": "Kitchen/Service",
+      "what_to_fix": "'Alle Tische im Outdoorbereich waren nicht sauber und es gab eine limitierte Auswahl an Speisen'",
+      "suggested_action": "Erweiterung der Menüoptionen für die Außenumkehr, Verbesserung des Reinigungsprozesses"
+    },
+    {
+      "theme": "Preise ohne Transparenz bei Zusatzkosten",
+      "area": "Service/Kitchen",
+      "what_to_fix": "'Mayo kostet ab der ersten Tüte Extra' - Bestellungen nicht genau oder transparent.",
+      "suggested_action": "Transparentere Preisstrukturen und klare Informationen über Zusatzkosten"
+    },
+    {
+      "theme": "Lebensmittelsicherheit",
+      "area": "Kitchen Management",
+      "whatdict": "Unser Essen war alt, Unsicherheiten darüber, wie lange die Lebensmittel verfügbar sind.",
+      "suggested_action": "Implementierung strengerer Protokolle zur Sicherstellung von frischen Lebensmitteln und bieten Sie Schulungen für Küchenpersonal an, um die Lebensmittelsicherheit zu gewährleisten."
+    }
+  ],
+  "quick_wins_next_7_days": [
+    "Implementierung eines Kundenbindungsprogramms mit Krone",
+    "Erstellung einer transparente Preisstruktur und Informationen über Zusatzkosten"
+  ],
+  "longer_term_30_days": [
+    "Umsetzung von Maßnahmen zur Reduzierung der Servicezeiten, z.B durch mehr Personal oder verbesserte Abläufe",
+    "Training des Personals in effektivem und höflichem Umgang mit den Kunden"
+  ],
+  "suggested_kpis": [
+    "Reduktion von Bestellzeit für Produkte zur Verbesserung der Essenserfahrung (ziel: Reduzierung auf unter drei Minuten)",
+    "'Mayo kostet ab der ersten Tüte Extra' - Erhöhung des Kundenzufriedenheitswerts in Bezug auf Preistransparenz",
+    "Erhöhung von Bestellgenauigkeit und Lebensmittelsicherheitsprotokollen (ziel: Keine Beschwerden oder Probleme wegen der Essensqualität)",
+    "'Mayo kostet ab der ersten Tüte Extra' - Verbesserung des Kundenzufriedenheitswerts in Bezug auf Preise",
+    "Reduzierung von Waitzeiten für den Service (ziel: Reduktion unter zehn Minuten)"
+  ]
+}

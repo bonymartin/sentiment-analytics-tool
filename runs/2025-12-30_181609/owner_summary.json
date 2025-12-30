@@ -1,0 +1,162 @@
+{
+  "headline": "Strategische Restaurantverbesserung basierend auf Feedback und Stärken",
+  "areas_of_excellence": [
+    {
+      "theme": "Positive Atmosphäre",
+      "area": "Management",
+      "what_to_keep": "Der Ort ist sehr freundlich, die Personalmitarbeiter präsentieren sich positiv.",
+      "how_to_market_it": "Hervorheben unserer einladenden und herzlichen Umgebung in Marketingmaterialien."
+    },
+    {
+      "theme": "Freundliches Personale",
+      "area": "Service",
+      "what_to_keep": "Sehr freundliche Mitarbeiter bringen eine positive Erfahrung für die Gäste und Personal ist super fröhlich.",
+      "how_to_market_it": "Highlighten unserer hervorragenden, engagierten Teamkultur in Marketingmaterialien."
+    },
+    {
+      "theme": "sehr hörbares Personal, sehr sauberes Ambiente",
+      "area": "Service|Kitchen",
+      "what_toz_keep": "Sehr höfliches und auffällig aufmerksames Personal in einem hochsauberen Umfeld.",
+      "how_to_market_it": "Erstellen einer Marketingstrategie, die unsere saubere Präsentation betont."
+    },
+    {
+      "theme": "sehr schnell zubereitet",
+      "area": "Kitchen|Service",
+      "what_to_keep": "Rasche Zubereitungszeit, die Service verbessert und Kundenzufriedenheit steigert.",
+      "how_to_market_it": "Stärken unserer schnellen Kücheneffizienz in Marketingmaterial."
+    },
+    {
+      "theme": "Superfrömmigkeit und Effektive Kommunikation von Personal",
+      "area": "Service",
+      "what_to_keep": "Hervorragende Personalkompetenz.",
+      "how_to_market_it": "'Unsere Mitarbeiter sind nicht nur freundlich, sondern auch wirkungsvoll in ihrer Kommunikation', heben Sie diese Fähigkeit hervor."
+    }
+  ],
+  "areas_of_improvement": [
+    {
+      "theme": "Bestellgeschwindigkeit und Genauigkeit",
+      "area": "Service",
+      "what_to_fix": "Probleme mit Bestell-Katastrophenempfehlungen.",
+      "suggested_action": "Implementierung zusätzlicher Schulungen zur Verbesserung der Bestellgenauigkeit und Anforderungen an Rufservice."
+    },
+    {
+      "theme": "Temperaturkontrolle im Außenbereich",
+      "area": "Service & Management",
+      "what_to_fix": "Keine Klimaanlage während heißer Tage mit vollständig ausgelasteten Außendosenbussen.",
+      "suggested_action": "Erwägen der Bereitstellung von Kühlungssystemen für den Komfort im Ausgehbereich bei hohen Temperaturen."
+    },
+    {
+      "theme": "Kundenbindungsprogramm und Self-Service Terminals",
+      "area": "Management & Service",
+      "what_to_fix": "Absence eines Kundenbindungsprogramms mit Kronen und kein Selbstorder Terminal verfügbar.",
+      "suggested_action": "Ersetzen des Systems durch ein funktionelles Programm zur Aufrechterhaltung der Kontakte, sowie Integration von Self-Service Terminals für die Bestellungen."
+    },
+    {
+      "theme": "Qualität des Essens bei Lieferangeboten",
+      "area": "Service & Management",
+      "what_to_fix": "Katastrophales Essenerlebnis aufgrund von Bestellungen über App oder Dritte-Firmen.",
+      "suggested_action": "Revision der Lieferungsmethoden und -qualität, um das Mahlzeitzustande zu verbessern."
+    },
+    {
+      "theme": "Wiederholung einer Bestellanfrage",
+      "area": "Service|Mgmt",
+      "what_to_fix": "Unzählige Wiederholungen der gleichen Bestellanfrage ohne Erklärung oder Alternativoption.",
+      "suggested_action": "Einführung klarer und flexibler Prozeduren zur Bearbeitung wiederkehrender Anfragen."
+    },
+    {
+      "theme": "Fehlende Genauigkeit bei der Bestellungsaufnahme",
+      "area": "Service|Mgmt",
+      "what_to_fix": "Unzählige Wiederholungen von Ungenauigkeiten in Aufzeichnungen und Kundenkommunikation.",
+      "suggested_action": "Implementierung regelmäßiger Schulungs-Sitzungen für das Personal zur Verbesserung der Genauigkeit bei Bestellaufnahmen."
+    },
+    {
+      "theme": "'Weird', aufgrund unzureichender Menüoptionen",
+      "area": "Service|Mgmt",
+      "what_to_fix": "'Mayo kostet ab der ersten Tüte.' Unangemessen oder fehlende Auswahl an Gerichten.",
+      "suggested_action": "Erweiterung und Diversifizierung des Menüs, um eine breitere Palette von Optionen zu bieten."
+    },
+    {
+      "theme": "Unzufriedenheit beim Abschluss einer Transaktion",
+      "area": "Mgmt|Service/Kitchen",
+      "what_to_fix": "'Mayo kostet ab der ersten Tüte,' Unklarheiten bei Preisen und Produkteinstellungen.",
+      "suggested_action": "Verbesserung von Transaktionsprozess, Klare Präsentation aller Details für eine effektive Kommunikation."
+    },
+    {
+      "theme": "Komplexer Geschäftszyklus mit langen Wartezeiten und unproduktiven Wiederholungsbestellungen",
+      "area": "Mgmt|Service/Kitchen",
+      "what_to_fix": "Geschäftszyklus, der durch lange Wartezeiten gekennzeichnet ist.",
+      "suggested_action": "Optimierung des Liefer- und Bestellsysteme zur Reduzierung von Warten."
+    },
+    {
+      "theme": "Verbesserung bei Quetschen",
+      "area": "Service",
+      "what_to_fix": "'Junior erhält keine Informationen über verfügbares Quetschens.'.",
+      "suggesteded action": "Erweiterte Schulungen für das Personal, um deren Kenntnisse zur Verfügung stehenden Menüs zu verbessern."
+    },
+    {
+      "theme": "Lange Wartezeiten aufgrund schlechter Unterweisung und Einarbeitierung",
+      "area": "Service/Mgmt",
+      "what_to_fix": "'Große Lücken bei der Ausbildung von Mitarbeitern.'.",
+      "suggesteded action": "Investition in Schulungsprogramme für das Personal zur Steigerung ihrer Effizienz."
+    },
+    {
+      "theme": "Burgergrößen",
+      "area": "Kitchen",
+      "what_to_fix": "'Even Bigger Burgers' Unbefriedigende Größe.",
+      "suggesteded action": "Sicherstellen, dass die Burger entsprechenden Erwartungen in Bezug auf ihre Abmessung entsprechen."
+    },
+    {
+      "theme": "Preise",
+      "area": "Service/Mgmt",
+      "what_to_fix": "'Schockiert bei den Preisen.'.",
+      "suggesteded action": "Überprüfung und Anpassung unserer Preisstrategie, um ein angemessenes Verhältnis von Qualität zu Kosten sicherzustellen."
+    },
+    {
+      "theme": "Atmosphäre',   # Alte Schreibfehler korrigiert: 'ly leerer Atmosphäre eines Tennisclubheims' hinzugefügt.  To improve the restaurant ambiance, possibly by adopting a more inviting decor that sets it apart from club environments.",
+      "area": "Service/Mgmt",
+      "what_to_fix": "Abgesehen davon leerer Atmosphäre eines Tennisclubheims.'."
+    },
+    {
+      "theme": "Fleischqualität',    # Alte Schreibfehler korrigiert: 'Hähnchen-Nuggets lauwarm und nicht knusprig' hinzugefügt. To ensure high quality of meat products, perhaps by refining the preparation process or cooking equipment.",
+      "area": "Kitchen",
+      "what_to_fix": "'Hähnchen-Nuggets lauwarm und nicht knusprig.'."
+    },
+    {
+      "theme": "Gastfreundschaft',    # Alte Schreibfehler korrigiert: 'Cashier Interaktion' hinzugefügt. To enhance guest service quality, possibly by offering better training for cashiers and staff on interpersonal skills.",
+      "area": "Service",
+      "what_to_fix": "'Cashier Interaction.'."
+    },
+    {
+      "theme": "Effektive Kommunikation von Personal', To market our team's positive interaction and customer service quality, perhaps by sharing testimonial stories or training highlights in promotional materials.",
+      "area": "Service",
+      "how_to_mark": "'Nuestro equipo se destaca en nuestra comunicación y servicio a los clientes.' (Our team excels at communication and customer service.)."
+    }
+  ],
+  "suggested_keywords": [
+    "bestellung",
+    "Preis, Servicequalität, Atmosphäre",
+    "Mitarbeiterentwicklung"
+  ],
+  "quick_actions": [
+    {
+      "name": "Schulungen zur Verbesserung der Bestelloptimalisation und -präzision."
+    },
+    {
+      "name": "Implementierung eines Kundenbindungsprogramms mit Online-Kurzbewertungen.",
+      "description": "'Unternehmen integrieren ein systematisches Feedbackmechanismus für kontinuierliche Verbesserung.'."
+    },
+    {
+      "name": "Erneuerung der Küchentechnik zur verbesserten Fleischqualität",
+      "description": "'Unternehmen investieren in hochwertige Kochtechnologien und -ausrüstungen' ."
+    }
+  ],
+  "quick_actions2": [
+    {
+      "name": "Implementierung eines Self-Service Systems für Bestellung."
+    },
+    {
+      "name": "Verbesserte Interaktion zwischen Cashierern, Erstellung von Bewertungsanleitungen und Servicequalität",
+      "description": "'Unternehmen erforschen die Vorteile der interaktiveren Kundenkommunikation'"
+    }
+  ]
+}

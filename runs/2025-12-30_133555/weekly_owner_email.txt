@@ -1,0 +1,67 @@
+Subject: Restaurant — Weekly Review Summary — 2025-12-30
+
+Restaurant Performance Insights and Enhancement Strategies for Owner — Restaurant
+Model: LLM
+Run date/time: 2025-12-30 13:55
+
+DATA SNAPSHOT
+• Reviews: 26 | VADER avg: -0.34 | Pos/Neu/Neg: 2/12/12
+• Stars: 1★=11, 2★=4, 3★=3, 4★=3, 5★=5
+
+TOP STRENGTHS (keep & promote)
+1. [Service] Positive Gästeerfahrung — Penetrante und freundliche Atmosphäre, wie ausgedrückt durch den Ausdruck ';-)'', positive Erfahrungen mit Mitarbeite...
+   Evidence: "Penetrantenfreundliche Atmosphäre, wie ausgedrückt durch den Ausdruck ';-)'', was auf eine positive Gästeer..."
+2. [Service] Sauberes Restaurant — Review: 'Essen war gut und der Service sehr nett und Aufmerksam.' highlights the quality service provided despite oth...
+
+TOP ISSUES (fix next)
+1. [Service] Hygiene and Cleanliness in Waiting Area
+   Fix: Review: 'Es waren keine Servietten vorhanden und man musste auf Nachfrage extra holen. Dreckige Tische wurden erwähnt.
+   Next: Ensure cleanliness by providing enough servicetowels and maintain regular sanitation of tables to create a pleasant dining envi...
+2. [Menu Items|Pricing clarity for condiments like mayo.] Mayo Availability and Pricing Transparency
+   Fix: Reviews kommentierten, dass Mayonipreise oder deren Unklarheit nicht transparent sind und es scheint eine Erwartung z...
+   Next: Preise/Extras transparent machen (Beschilderung/Bon-Hinweis) und Value-Deals klar kommunizieren.
+3. [Service] Managing High Customer Volume
+   Fix: Review: 'Ganze Dauern im Wartebereich mit mehreren Bestellungen, die den Preis nicht reflektieren.' deutet darauf hin...
+   Next: Owner pro Thema festlegen, 1 KPI messen, nach 7 Tagen Effekt prüfen und Maßnahmen nachjustieren.
+4. [Service] Bestellkatastrophen und Essenqualitätssorgen
+   Fix: Verbesserung erforderlich (aus Kundenfeedback abgeleitet).
+   Next: Umfassendes Training für das Personal zur Vermeidung von Fehlbestellungen und Verbesserung der Kundeninteraktion sowie Überprüf...
+5. [Service] Langsame Service
+   Fix: Verbesserung erforderlich (aus Kundenfeedback abgeleitet).
+   Next: Optimieren des Verfahrens zur Bearbeitung der Bestellungen durch den Einsatz zusätzlicher Personalressourcen oder Automatisieru...
+
+RECURRING MENTIONS (examples)
+• Service:
+  + "Penibel und freundlich" (1x)
+  + "Freundlichkeit der Mitarbeiter im netten Ton" (1x)
+  - "Nicht spezifisch negativer Service oder Kommunikation erwähnt, implizite negative Meinung zum Standort und möglicherweise zur Qualität de..." (1x)
+  - "Es ist eine negative Erfahrung mit einer 'Bestellkatastrophe', was auf Ungenauigkeiten bei der Bestellabwicklung hinweist." (1x)
+• Kitchen:
+  + "Essen war gut" (2x)
+  + "Penetrantenfreundliche Atmosphäre, wie ausgedrückt durch den Ausdruck ';-)'', was auf eine positive Gästeerfahrung hinweisen könnte" (1x)
+  - "Die Pommes von unseren Freunden waren extrem trocken und haben geschmeckt als wären die schon seit 20 min da rumgelegen, was auf zu dunkl..." (1x)
+  - "Katastrophen bei der Bestellung mit Aussicht auf ein schlechtes Essenserlebnis" (1x)
+• Management:
+  + "Positive Atmosphäre angezeigt durch Ausdruck des Kunden (';-)'), was auf ein angenehmes Ambiente hinweist." (1x)
+  + "Freundliche Mitarbeiter mit positivem Auftreten" (1x)
+  - "Lange Bestellzeit und falsche Zubereitung trotz wiederholter Anfragen ('lange Bestellung hat lange gedauert und wurde sogar nach mehrmali..." (1x)
+  - "Kein Kundenbindungsprogramm mit Kronen, kurz und prägnant beschrieben" (1x)
+
+QUICK WINS (next 7 days)
+• Hygiene and Cleanliness in Waiting Area — Ensure cleanliness by providing enough servicetowels and maintain regular sanitation of tables to create...
+• Mayo Availability and Pricing Transparency — Preise/Extras transparent machen (Beschilderung/Bon-Hinweis) und Value-Deals klar kommunizieren.
+• Managing High Customer Volume — Owner pro Thema festlegen, 1 KPI messen, nach 7 Tagen Effekt prüfen und Maßnahmen nachjustieren.
+
+30-DAY PLAN
+• Bestellkatastrophen und Essenqualitätssorgen — Standard definieren + Team schulen + KPI 1x/Woche prüfen.
+• Langsame Service — Standard definieren + Team schulen + KPI 1x/Woche prüfen.
+• Mangel an Kundenbindungsprogramm oder Belohnungen für wiederholte Gäste — Standard definieren + Team schulen + KPI 1x/Woche prüfen.
+
+KPIs TO TRACK
+• Average Wait Time (Min.) — Timer: 20 Bestellungen pro Schicht messen.
+• Order Accuracy (%) — Stichprobe: 30 Bestellungen/Woche prüfen.
+• Food Quality Rating (1–5) — QR-Umfrage auf Bon / Tischaufsteller.
+• Cleanliness Checklist Score — Tägliche Checkliste + wöchentliches Audit.
+
+Generated on: 2025-12-30 13:55
+Tip: Store each run’s JSON + CSV to build trends in a dashboard.

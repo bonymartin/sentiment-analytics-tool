@@ -1,0 +1,63 @@
+Subject: Weekly Review Summary — Pizza House — 2025-12-30
+
+Restaurant Performance Review and Action Plan — Pizza House
+Model: phi3.5
+Run date: 2025-12-30 14:23
+
+DATA SNAPSHOT
+• Reviews analyzed: 31
+• Overall sentiment (VADER avg): -0.29  (-1 to +1)
+• Sentiment: Positive=5, Neutral=12, Negative=14
+• Stars: 1★=12, 2★=5, 3★=4, 4★=5, 5★=5
+
+TOP STRENGTHS (keep & promote)
+1. [Management] Ambiance, Management
+   Keep: Lugar limpio y tranquilo with friendly management.
+   Promote: Promote the warm and clean ambience maintained by Natalia in your marketing campaigns.
+2. [Service] Service, Friendly Staff
+   Keep: Freundliche und höfliches Personal.
+   Promote: Highlight the courteous and friendly staff in your marketing efforts.
+3. [Service] Schnelle Service, Quick Meals
+   Keep: Beibehalten und standardisieren.
+   Promote: Market your efficient service and swift meal preparation times.
+
+TOP ISSUES (prioritized)
+1. [Service] Order Process, Feedback
+   Fix: Verbesserung erforderlich (aus Kundenfeedback abgeleitet).
+   Action: Improve order handling process for quicker response to customer needs.
+2. [Temperature Control im Außenbereich] Facilities, Comfort in Summer
+   Fix: Verbesserung erforderlich (aus Kundenfeedback abgeleitet).
+   Action: Implement air conditioning or fans for a more comfortable outdoor dining experience.
+3. [Kitchen] Menu Clarity, Burger Options
+   Fix: Verbesserung erforderlich (aus Kundenfeedback abgeleitet).
+   Action: Pro Schicht einen kurzen Qualitäts-Check einführen (Temperatur/Frische/Portion) und Standards sichtbar im Team kommunizieren.
+4. [Service] Customer Communication, Availability Disclosure
+   Fix: Verbesserung erforderlich (aus Kundenfeedback abgeleitet).
+   Action: Owner festlegen, 1 KPI definieren, 7 Tage messen und nachjustieren.
+5. [Physical Environment|Hygiene and Clean Table Conditions.] Cleanlinthy, Table Conditions
+   Fix: Verbesserung erforderlich (aus Kundenfeedback abgeleitet).
+   Action: Owner festlegen, 1 KPI definieren, 7 Tage messen und nachjustieren.
+
+RECURRING QUOTES (from extraction)
+• Positive:
+  - "Essen war gut" (3x)
+  - "Service sehr nett und Aufmerksam" (2x)
+  - "Der Mann hinter der Kasse war an sich nett" (2x)
+• Negative:
+  - "Katastrophaler Fehler bei der Bestellabwicklung und fehlende Aufmerksamkeit, was zu einer schlechten Benutzeroberfläche führte." (1x)
+  - "Lack von Unterstützung durch einen automatischen Bezahlsystem (Fehlen) und Mangel an Teilnahme am Treueprogramm" (1x)
+  - "Keine Bestellmöglichkeit für ein Whopper Burger ohne Erklärung und begrenzte Auswahl auf dem Menü" (1x)
+
+ACTION PLAN
+• Quick wins (next 7 days):
+  - Implement structured order presentation system
+  - Ensure proper cleanliness of dining area
+• Longer term (next 30 days):
+  - Install an outdoor cooling system or fans for summer comfort.
+  - Train restaurant staff in efficient and courteous service delivery.
+
+KPIs TO TRACK (simple)
+• Improved customer satisfaction score
+• Increased repeat customers
+
+Generated on: 2025-12-30 14:34

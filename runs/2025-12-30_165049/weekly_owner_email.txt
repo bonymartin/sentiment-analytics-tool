@@ -1,0 +1,67 @@
+Subject: Weekly Review Summary — Pizza House — 2025-12-30
+
+Restaurant Performance Enhancement Guide for Owner — Pizza House
+Model: phi3.5
+Run date: 2025-12-30 16:50
+
+DATA SNAPSHOT
+• Reviews analyzed: 31
+• Overall sentiment (VADER avg): -0.29  (-1 to +1)
+• Sentiment: Positive=5, Neutral=12, Negative=14
+• Stars: 1★=12, 2★=5, 3★=4, 4★=5, 5★=5
+
+TOP STRENGTHS (keep & promote)
+1. [Service] Freundliche Mitarbeiter and Service Attitude
+   Keep: Sehr freundliche und höfliche Mitarbeiter im gesamten Betrieb.
+   Promote: Promote die hervorragende Servicestimmung als einen der Hauptgrundpunkte in Ihrer Marketingstrategie.
+2. [Management] Warm and Inviting Atmosphere
+   Keep: Ein gemütliches und einladendes Ambiente, das sich hervorhebt.
+   Promote: Hervorhebung des warmen Umfelds als einen von Natur aus warmth-geladenen Aspekt in Ihrer Marketingstrategie.
+3. [Service] Hilfsbereites Personal
+   Keep: Personal, das sich beständig bemüht und helfend eingestellt ist.
+   Promote: Stilisieren die Freundlichkeit und Geduld der Mitarbeiter in Ihrer Marketingkampagne.
+
+TOP ISSUES (prioritized)
+1. [Kitchen] Order Processing Time and Food Preparation
+   Fix: Lange Bestelloption und falsche Zubereitung von Gerichten.
+   Action: Optimierung des Essenslieferungsprozesses, um sicherzustellen, dass das Essen schnell zubereitet wird. Implementieren Sie eine besser strukturierte Qualitätskontrollsystem für korrektes Zubereiten von Gerichten.
+   Evidence: "Unsere Bestellung hat lange gedauert und wurde trotz mehrmaliger Wiederholung falsch zubereitet"
+2. [Service] Digital Order System Implementation
+   Fix: Fehlen von Self-Order Terminal.
+   Action: Implementierung digitaler Methoden für Bestellungen und Abwicklungen, um die Prozesse zu vereinfachen.
+3. [Management] Loyalty Program for Regular Customers
+   Fix: Verbesserung erforderlich (aus Kundenfeedback abgeleitet).
+   Action: Erstellen Sie ein Kundenbindungsprogramm mit Belohnungen, um Treue und Rückkopplung zu fördern.
+4. [Service] Order Process Streamlining at Drive-In
+   Fix: Verbesserung erforderlich (aus Kundenfeedback abgeleitet).
+   Action: Optimierung des Prozesses beim Aufgeben von Bestellungen, Verbesserung der Kommunikation zur Preisgestaltung.
+5. [Kitchen] Standardizing Cooking Times for Menu Items
+   Fix: Verbesserung erforderlich (aus Kundenfeedback abgeleitet).
+   Action: Implementieren Sie standardmäßige Cooking-Zeiten für Speisen, um sowohl Qualität als auch Auslieferungseffizienz sicherzustellen.
+
+RECURRING QUOTES (from extraction)
+• Positive:
+  - "La chica que nos ha atendido (Natalia) ha sido muy paciente con nosotros pese a la diferencia de idioma." (3x)
+  - "Der Mann hinter der Kasse war an sich nett" (2x)
+  - "Essen war gut" (2x)
+• Negative:
+  - "Nicht zum Essen geeignet (impliziert durch 'geht hier nicht auf keinen Fall essen')" (1x)
+  - "Es ist eine Essensbestellungs-Katastrophe erlebt und es wird vorgeschlagen, die Bestellung nicht aufzugeben." (1x)
+  - "Lack an Mangel an Loyalitätsprogrammen" (1x)
+
+ACTION PLAN
+• Quick wins (next 7 days):
+  - Implementieren Sie ein Loyalitätsprogramm für regelmäßige Gäste.
+  - Initiate staff-orientierte Schulungen zum Umgang mit Menüfragen und Kundenkommunikation.
+• Longer term (next 30 days):
+  - Optimierung des Prozesses beim Aufgeben von Bestellungen, Verbesserung der Kommunikation zur Preisgestaltung.
+  - Implementieren Sie standardmäßige Cooking-Zeiten für Speisen, um sowohl Qualität als auch Auslieferungseffizienz sicherzustellen.
+  - Einführung eines Selbstbedienungssystem oder Loyalitätsprogramm, um das Bedienen zu erleichtern.
+
+KPIs TO TRACK (simple)
+• Average Wait Time (Min.) — Timer: 20 Bestellungen pro Schicht messen.
+• Order Accuracy (%) — Stichprobe: 30 Bestellungen/Woche prüfen.
+• Food Quality Rating (1–5) — QR-Umfrage auf Bon / Tischaufsteller.
+• Cleanliness Checklist Score — Tägliche Checkliste + wöchentliches Audit.
+
+Generated on: 2025-12-30 17:04

@@ -1,0 +1,65 @@
+Subject: Weekly Review Summary — Pizza House — 2025-12-30
+
+Strategische Priorisierung für Restaurant-Exzellenz und Verbesserungsmaßnahmen basierend auf Kundenbewertungen von Burger King — Pizza House
+Model: phi3.5
+Run date: 2025-12-30 20:14
+
+DATA SNAPSHOT
+• Reviews analyzed: 31
+• Overall sentiment (Fused avg): -0.40  (-1 to +1)
+• Sentiment (Fused): Positive=8, Neutral=0, Negative=23
+• Stars: 1★=12, 2★=5, 3★=4, 4★=5, 5★=5
+
+TOP STRENGTHS (keep & promote)
+1. [Service/Management] Freundlichkeit und Wohlbefinden
+   Keep: Sehr freundliche Mitarbeiter, positive Atmosphäre hervorgerufen durch das Zitat 'Absoluter Saftladen, geht hier auf keinen Fall essen' und hohe Unterstützung bei der Bearbeitung von Kundenbeschwerden
+   Promote: 'Wir setzen unsere erzielten Ruf als vorbildliche Serviceeinheit in unserer Marketingstrategie fort, mit einem besonderen Schwerpunkt auf Empathie und professionelle Unterstützung von Mitarbeitern.
+2. [Mgmt/Service] Ambiente Hervorrufung
+   Keep: Beibehalten und standardisieren.
+   Promote: In Google/Online-Bewertungen hervorheben.
+3. [Service] Sehr höfliches Personal
+   Keep: Beibehalten und standardisieren.
+   Promote: In Google/Online-Bewertungen hervorheben.
+
+TOP ISSUES (prioritized)
+1. [General] Bestellzeitmanagement
+   Fix: Problem genauer beschreiben und messen.
+   Action: Klaren Standardprozess definieren und schulen.
+2. [General] Falsches Einschätzen des Essens
+   Fix: Problem genauer beschreiben und messen.
+   Action: Klaren Standardprozess definieren und schulen.
+3. [General] Einbeziehungsproblem
+   Fix: Problem genauer beschreiben und messen.
+   Action: Klaren Standardprozess definieren und schulen.
+4. [General] Mangel an klaren Bestellmöglichkeiten im Drive-In
+   Fix: Problem genauer beschreiben und messen.
+   Action: Klaren Standardprozess definieren und schulen.
+5. [General] Ungünstige Kostenstruktur
+   Fix: Problem genauer beschreiben und messen.
+   Action: Klaren Standardprozess definieren und schulen.
+
+RECURRING QUOTES (from extraction)
+• Positive:
+  - "La chica que nos ha atendido (Natalia) ha sido muy paciente con nosotros pese a la diferencia de idioma." (2x)
+  - "Penetrant Grinsen von '" (1x)
+  - "-)', was auf ein positives Erlebnis hinweisen könnte" (1x)
+• Negative:
+  - "Es ist von mir abzuraten aufgrund einer 'Bestellungs-Katastrophe'." (1x)
+  - "Weird und kein Whopper burger-Optionen angeboten" (1x)
+  - "Lange Wartezeit aufgrund mangelhafter Eingewödigkeit" (1x)
+
+ACTION PLAN
+• Quick wins (next 7 days):
+  - Implementierung von Klare Bestellmöglichkeiten im Drive-In
+  - Unterweisung des Personals bei der Reaktion auf Beschwerden und Empathie für den Servicekundenfluss.
+• Longer term (next 30 days):
+  - Besser Organisation von Reinigungsprozessen zur Verbesserung der Sauberkeit
+  - Aktualisierung des Menüs mit klaren und spezifischen Optionen, um die Bestellzeit zu beschleunigen
+
+KPIs TO TRACK (simple)
+• Reduzierte Kundenzufriedenheit bei Problemen im Service
+• Zunehmender positiver Tenor in Feedback von Mitarbeitern und Gästen zur Verbesserung der Kommunikation zwischen Restaurantleitungssitzungen.
+• Erhöhte Auslastung durch effizientere Bestellausführungsprozesse
+• Verbesserter Erwartungshorizont an Essenerlebnis basierend auf den Qualitätsverbesserungen der Speisen
+
+Generated on: 2025-12-30 20:26

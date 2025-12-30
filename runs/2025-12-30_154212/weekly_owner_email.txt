@@ -1,0 +1,30 @@
+Subject: Weekly Review Summary — Restaurant
+
+Restaurant Performance Summary — Restaurant — Restaurant
+Model: LLM
+Run date: 2025-12-30 15:57
+
+DATA SNAPSHOT (this run)
+• Reviews analyzed: 31
+• Overall sentiment (VADER avg): -0.29  (-1 to +1)
+• Sentiment buckets: Positive=5, Neutral=12, Negative=14
+• Star distribution: 1★=12, 2★=5, 3★=4, 4★=5, 5★=5
+
+TOP STRENGTHS (keep & promote)
+• (No clear strengths detected in this run.)
+
+TOP ISSUES (prioritized)
+• (No clear issues detected in this run.)
+
+QUICK WINS (next 7 days)
+
+LONGER TERM (next 30 days)
+
+SUGGESTED KPIs TO TRACK
+• Average Wait Time (Min.) — Timer: 20 Bestellungen pro Schicht messen.
+• Order Accuracy (%) — Stichprobe: 30 Bestellungen/Woche prüfen.
+• Food Quality Rating (1–5) — QR-Umfrage auf Bon/Tischaufsteller.
+• Cleanliness Checklist Score — Tägliche Checkliste + wöchentliches Audit.
+
+Generated on: 2025-12-30 15:57
+Tip: Store each run’s JSON + CSV to build trends in a dashboard.

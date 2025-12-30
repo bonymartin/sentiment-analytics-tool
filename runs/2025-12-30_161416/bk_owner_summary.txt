@@ -1,0 +1,60 @@
+{
+  "headline": "Key Strengths and Opportunities for Improvement in Restaurant Operations",
+  "areas_of_excellence": [
+    {
+      "theme": "Atmosphere",
+      "area": "Management/Ambiente",
+      "what_to_keep": "Sehr freundliches Personal mit positivem interpersonellem Touch und starkes Ambiente"
+    },
+    {
+      "theme": "Kochqualität des Essens",
+      "area": "Kitchen",
+      "what_to0Keep": "Das Essen ist gut, wie in den Rezensionen erwähnt."
+    },
+    {
+      "theme": "sehr hohe Freundlichkeit",
+      "area": "Personal",
+      "what_to_keep": "Sehr höfliches Personal"
+    }
+  ],
+  "areas_of_improvement": [
+    {
+      "theme": "Service Speed and Accuracy",
+      "area": "Kitchen/Service",
+      "what_to_fix": "Lange Bestellzeiten und falsche Zubereitung von Speisen",
+      "suggestedaction": "Trainieren Sie das Personal zur Verbesserung der Effizienz im Restaurantdienst, mit besonderem Schwerpunkt auf Geschicklichkeit beim Lesen von Menüs für internationale Gäste"
+    },
+    {
+      "theme": "Ordering System",
+      "area": "Mgmt/Kitchen/Service",
+      "what_to_fix": "Fehlende Selbstorder-Terminals und kein Kundenbindungsprogramm mit Krone, was den Bedienungsweg unbequem macht.",
+      "suggestedaction": "'Implementierung eines leichtfüßigen Self Ordering System oder Einführung digitaler Bestellungen zur Reduzierung von Fehlern und Verbesserung des Gästeerlebnisses'"
+    },
+    {
+      "theme": "Temperature Control",
+      "area": "Kitchen/Service",
+      "what_to_fix": "Keine Klimaanlage in heißen Tagen, was zu Unbehagen für die Gäste führt.",
+      "suggestedaction": "'Investition oder Verbesserung des Kühl- und Belüftungsmechanismus während warmer Tage'"
+    },
+    {
+      "theme": "Bestellmanagement",
+      "area": "Kitchen/Service",
+      "what_to_fix": "Bedauerliche Fehler bei der Bestellung, mit anschließenden Ausbrüchen von Gelächter aufgrund katastrophaler Qualität des Essens.",
+      "suggestedaction": "'Etablierung eines strengeren Prozesses zur Überprüfung und Koordination zwischen Kundenbestellungen vor der Zubereitung, um Missverständnisse zu vermeiden'"
+    },
+    {
+      "theme": "Bestellverständnis and Communication",
+      "area": "Service/Management",
+      "what_to_fix": "'Keine Bestellgenauigkeit und schlechte Kommunikation bei der Menüauswahl.'"
+    },
+    "suggestedaction': 'Trainieren Sie das Personal, klare Kundenfragen zu beantworten und spezifische Auswahlmöglichkeiten bereitzustellen', "
+  ],
+  "quick_wins_next_7_days": [
+    "Implementierung eines leichtfüßigen Self Ordering System oder Einführung digitaler Bestellungen",
+    "Trainieren des Personals zur Verbesserung der Effizienz im Restaurantdienst"
+  ],
+  "longer_term_30_days": [
+    "'Investition in Mitarbeiterschulungen', 'Stellen Sie sicher, dass alle Lebensmittel regelmäßig auf ihre Frische überprüft werden'",
+    "suggested_kpis"
+  ]
+}

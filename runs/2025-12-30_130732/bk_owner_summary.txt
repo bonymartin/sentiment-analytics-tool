@@ -1,0 +1,79 @@
+{
+  "headline": "Restaurant-Qualitätsüberblick und Verbesserungsmöglichkeiten",
+  "areas_of_excellence": [
+    {
+      "theme": "Freundlichkeit und Positive Atmosphäre",
+      "area": "Service",
+      "what_to_keep": "Sehr freundliche Mitarbeiter, positive Bedienungston.",
+      "how_to_market_it": "Fokus auf die Freundlichkeit der Mitarbeiter und positiven Erlebnisse in den Marketingmaterialien"
+    },
+    {
+      "theme": "Warmes Ambiente ohne Klimaanlage",
+      "area": "Management",
+      "what_to_keep": "Die Einrichtung hat ein warm-feuchtes Gefühl, trotz fehlender Klimaanlage.",
+      "how_to_market_it": "Hervorhebung des charakteristischen Warmgefühls der Filialumgebung in den Marketingstrategien"
+    },
+    {
+      "theme": "Freundliche Bedienung",
+      "area": "Service",
+      "what_to_keep": "Die Service wird als sehr nett und aufmerksam beschrieben.",
+      "how_to_market_it": "Fokusieren Sie darauf, das freundliche Personal in Marketingmaterialien zu zeigen, um die Kundenbindung zu erhöhen."
+    },
+    {
+      "theme": "freundliches Personal",
+      "area": "Service+",
+      "what_to_keep": "Superfreiwillig freundliche Personalkonstellation hervorzuheben.",
+      "how_to_market_it": "Marketing der warmherzigen und hilfsbereiten Einstellung des Teams zur Schärfe."
+    }
+  ],
+  "areas_of_improvement": [
+    {
+      "theme": "Zeitaufwand und Bestellabwicklung",
+      "area": "Service",
+      "what_to_fix": "Dauer der Lieferando-Bestellung, die zu Problemen bei Bedienungsqualität führte.",
+      "suggested_action": "Verbesserungen in der Effizienz des Bestellmanagementsystems und Schulungen für Mitarbeiter zur Verbesserung ihrer Bearbeitungsgeschwindigkeit"
+    },
+    {
+      "theme": "Qualität des Essens",
+      "area": "Kitchen and Service Management",
+      "what_to_fix": "Problemen generalisiert bei der Vorbereitung, was zu negativem Feedback und Lachen führt.",
+      "suggested05: Verifikation ratiufihi des Prozesses für die Verbesserung des globalen Geschmacks": "Prüfungen strenger Qualitätskontrollprozess zur Erzielung von besseren Gerichten."
+    },
+    {
+      "theme": "Bedienungsfehler",
+      "area": "Service und Management",
+      "what_to_fix": "Fehlende Aufmerksamkeit und Bedienfehler bei der Bestellabwicklung.",
+      "suggested05: Auswahl fortschrittlicher Technologie für Fehlermeldungen im Prozess sowie Schulungsprogramme zur Verbesserung des Mitarbeitermanagements": "Implementierung von technologischen Lösungen und Trainings zum Reduzieren der Bedienfehler."
+    },
+    {
+      "theme": "Preise",
+      "area": "Service-",
+      "what_to_fix": "Schockierende Preiskalkulation ansprechen.",
+      "suggested05: Überprüfung der Preisstruktur, um sicherzustellen, dass sie im Verhältnis zum Servicequalität stehen": "Kostenkontrolle und Neukalkulierung von Preisen für Fairness."
+    },
+    {
+      "theme": "Serviceerlebnis",
+      "area": "Service-",
+      "what_to_fix": "Verbesserung der allgemeinen Servicequalität.",
+      "suggested05: Trainingprogramme implementieren, um Kommunikation und Bedienungsfähigkeit zu verbessern": "Förderung von Mitarbeitertrainings zur Steigerung des Kundenerlebnisses."
+    },
+    {
+      "theme": "Menüangebot",
+      "area": "Kitchen+",
+      "what_to_fix": "Reevaluierung und Erweiterung des Menüs.",
+      "suggested05: Kundenfeedback zu Nicht-Burger Optionen anfordern, um Präferenzen besser einzufangen": "Sammlung von Feedback zur Verbesserung der Angebotsvielfalt und Relevanz."
+    }
+  ],
+  "quick_wins_next_7_days": [
+    "Implementierung eines Trainingsprogramms für Mitarbeiter, um ihre Bedienungsqualität zu verbessern.",
+    "Kostenkontrolle zur Neukalkulation von Preisen."
+  ],
+  "longer_term_30_days": [
+    "Überprüfung und Verbesserungen des Bestellmanagementsystems für die Effizienzsteigerung.",
+    "Verbesserte Kommunikation durch Trainings zur Steigerung der Servicequalität."
+  ],
+  "suggested_kpis": [
+    "Steigerung von Kundenzufriedenheitswerten",
+    "Erhöhung des Umsatzes im Vergleich zu den Vorquartalen"
+  ]
+}

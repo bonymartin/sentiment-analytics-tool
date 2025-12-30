@@ -1,0 +1,47 @@
+Subject: Weekly Review Summary — Pizza House — 2025-12-30
+
+Restaurant Performance and Improvement Analysis for Owner-Advisor — Pizza House
+Model: phi3.5
+Run date: 2025-12-30 17:43
+
+DATA SNAPSHOT
+• Reviews analyzed: 31
+• Overall sentiment (Fused avg): -0.40  (-1 to +1)
+• Sentiment: Positive=8, Neutral=0, Negative=23
+• Stars: 1★=12, 2★=5, 3★=4, 4★=5, 5★=5
+
+TOP STRENGTHS (keep & promote)
+1. [Service] Freundlichkeit
+   Keep: Sehr freundliche Mitarbeiter, wie Natalia beschrieben.
+   Promote: Promote the highly friendly service team as a key part of your brand experience.
+2. [Mgmt+ & Atmosphere, specifically for drive-in dining.] Warmes Ambiente
+   Keep: Beibehalten und standardisieren.
+   Promote: Highlight the cozy and inviting ambiance that caters to heating needs during hot days.
+3. [Service] Personal
+   Keep: Beibehalten und standardisieren.
+   Promote: Advertise the consistently high level of friendliness and clean service to attract new customers.
+
+TOP ISSUES (prioritized)
+• No major repeated issues detected in this run.
+
+RECURRING QUOTES (from extraction)
+• Positive:
+  - "Essen war gut" (2x)
+  - "superfreundlich" (2x)
+  - "Essen war gut." (2x)
+• Negative:
+  - "Katastrophale Bestellgenauigkeit und Erwartungen nicht erfüllt" (1x)
+  - "Lack von Bestellautomatisierung und Nichterscheidung im Treueprogramm" (1x)
+  - "Keine Bestellmöglichkeit für ein Whopper Burger ohne Erklärung; Fehlende Kommunikation und Sauberheit beklagt, 'Weird'." (1x)
+
+ACTION PLAN
+• Quick wins (next 7 days):
+• Longer term (next 30 days):
+
+KPIs TO TRACK (simple)
+• Average Wait Time (Min.) — Timer: 20 Bestellungen pro Schicht messen.
+• Order Accuracy (%) — Stichprobe: 30 Bestellungen/Woche prüfen.
+• Food Quality Rating (1–5) — QR-Umfrage auf Bon / Tischaufsteller.
+• Cleanliness Checklist Score — Tägliche Checkliste + wöchentliches Audit.
+
+Generated on: 2025-12-30 17:56
