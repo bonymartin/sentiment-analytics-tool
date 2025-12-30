@@ -1,0 +1,57 @@
+Subject: Weekly Review Summary — Pizza House — 2025-12-30
+
+Restaurant-Performance Optimierung — Pizza House
+Model: phi3.5
+Run date: 2025-12-30 23:15
+
+DATA SNAPSHOT
+• Reviews analyzed: 31
+• Overall sentiment (Fused avg): -0.40  (-1 to +1)
+• Sentiment (Fused): Positive=8, Neutral=0, Negative=23
+• Stars: 1★=12, 2★=5, 3★=4, 4★=5, 5★=5
+
+TOP STRENGTHS (keep & promote)
+1. [Service] Freundlichkeit
+   Keep: Die vielfältige Freundlichkeit und die Bereitschaft, mit Kunden wie Natalia zu arbeiten trotz der Sprachbarriere.
+   Promote: In Google/Online-Bewertungen hervorheben.
+2. [Management & Service] Warm Ambiente
+   Keep: Das warm eingeführte Umfeld, das ein angenehmes Einkaufserlebnis bietet (wie durch den Mitarbeiter der Wärme deutlich wird).
+   Promote: In Google/Online-Bewertungen hervorheben.
+3. [Service] sehr hohe Freundlichkeit
+   Keep: Review erwähnt ein 'Sehr höfliches Personal', was darauf hinweist eine positive Erfahrung mit dem Servicepersonal.
+   Promote: In Google/Online-Bewertungen hervorheben.
+
+TOP ISSUES (prioritized)
+1. [Service] Bestellzeit
+   Fix: Die langsame Bestellabwicklung, die zu Unzufriedenheit führt.
+   Action: Optimierung des Serviceprozesses zur Reduzierung von Orderzeiten.
+2. [Service & Kitchen] Essensqualität
+   Fix: Die katastrophale Qualität der Bestellungen, die zu einem schlechten Einkaufserlebnis führt.
+   Action: Klaren Standardprozess definieren und schulen.
+3. [Service & Management] Bezahlbare Zufriedenheit
+   Fix: Problem genauer beschreiben und messen.
+   Action: Fortbildung für das Personal zur Verbesserung der Kommunikation und des Serviceansatzes.
+
+RECURRING QUOTES (from extraction)
+• Positive:
+  - "-)" (2x)
+  - "La chica que nos ha atendido (Natalia) ha sido muy paciente con nosotros pese a la diferencia de idioma." (2x)
+  - "Service sehr nett und Aufmerksam" (2x)
+• Negative:
+  - "Katastrophenbestellungen führen zu schlechter Zufriedenheit" (1x)
+  - "Weird, kein Whopper-Burger verfügbar ohne Erklärung" (1x)
+  - "Katastrophenbestellungen und das Gefühl, missverstanden zu werden" (1x)
+
+ACTION PLAN
+• Quick wins (next 7 days):
+  - Verbessern Sie die Essensqualität durch zusätzliche Qualitätsmanagementmaßnahmen.
+  - Implementieren oder Verbesserung der Bestellprozesse zur Verringerung von Wartezeiten.
+• Longer term (next 30 days):
+  - Einführung einer minimalen Serviceautomaten-System für bessere Kundenerfahrungen.
+  - Erstellen eines einfachen Anmelde/Treuebezeichnungsverfahren zur Verbesserung der langfristigen Zufriedenheit.
+
+KPIs TO TRACK (simple)
+• Verbesserte Bestellzeiten
+• Steigerungen in den Treustufen von Kunden
+
+Generated on: 2025-12-30 23:27
