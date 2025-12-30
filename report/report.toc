@@ -1,0 +1,35 @@
+\contentsline {chapter}{Abstract}{1}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}Introduction}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Project goals}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Generalization beyond restaurants}{5}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Background and Motivation}{6}{chapter.2}%
+\contentsline {chapter}{\numberline {3}State of the Art in Customer Feedback Analytics}{7}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Problem Definition and Use Case}{8}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Problem statement}{8}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Use case}{8}{section.4.2}%
+\contentsline {section}{\numberline {4.3}RAMI 4.0 positioning}{8}{section.4.3}%
+\contentsline {chapter}{\numberline {5}System Architecture and Design}{10}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Architectural objectives}{10}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Architecture overview}{10}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Run folder strategy (repeatability)}{11}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Key modules}{11}{section.5.4}%
+\contentsline {chapter}{\numberline {6}Analytics Methodology and Knowledge Discovery Process}{12}{chapter.6}%
+\contentsline {section}{\numberline {6.1}KDD mapping}{12}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Strict prompting strategy}{12}{section.6.2}%
+\contentsline {chapter}{\numberline {7}Implementation and Technologies}{13}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Technology stack}{13}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Code organization}{13}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Practical engineering challenges and fixes}{13}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Configuration via \texttt {.env}}{14}{section.7.4}%
+\contentsline {chapter}{\numberline {8}Evaluation and Results}{15}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Evaluation approach}{15}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Observed outputs}{15}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Example insight categories}{15}{section.8.3}%
+\contentsline {chapter}{\numberline {9}Discussion}{16}{chapter.9}%
+\contentsline {section}{\numberline {9.1}What worked well}{16}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Limitations}{16}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Extension opportunities}{16}{section.9.3}%
+\contentsline {chapter}{\numberline {10}Conclusion and Future Work}{17}{chapter.10}%
+\contentsline {chapter}{\numberline {A}Appendix}{18}{appendix.A}%
+\contentsline {section}{\numberline {A.1}End-to-end workflow}{18}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Suggested repository structure}{18}{section.A.2}%

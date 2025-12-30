@@ -1,0 +1,444 @@
+\documentclass[12pt,a4paper]{report}
+
+% -----------------------------
+% PACKAGES
+% -----------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% -----------------------------
+% PAGE SETUP
+% -----------------------------
+\geometry{
+  left=3cm,
+  right=2.5cm,
+  top=3cm,
+  bottom=3cm
+}
+
+\onehalfspacing
+\setlength{\parskip}{0.6em}
+
+% -----------------------------
+% METADATA (edit if needed)
+% -----------------------------
+\newcommand{\ProjectTitle}{Restaurant Review Insights: Hybrid Sentiment Analytics \& Local LLM Summarization}
+\newcommand{\ProjectSubtitle}{A decision-support tool positioned in the RAMI 4.0 Functional Layer}
+\newcommand{\AuthorName}{Bony Martin}
+\newcommand{\SupervisorName}{TBD}
+\newcommand{\UniversityName}{Hochschule Emden/Leer}
+\newcommand{\ProgramName}{M.Sc. Industrial Informatics}
+\newcommand{\RestaurantName}{Pizza House}
+\newcommand{\ModelName}{phi3.5 (Ollama local)}
+
+% -----------------------------
+% LISTINGS SETUP
+% -----------------------------
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible
+}
+
+% -----------------------------
+% DOCUMENT
+% -----------------------------
+\begin{document}
+
+% -----------------------------
+% TITLE PAGE
+% -----------------------------
+\begin{titlepage}
+\begin{center}
+\vspace*{2.8cm}
+
+\Large
+\textbf{\ProjectTitle}\\[0.6em]
+\large \ProjectSubtitle
+
+\vspace{2cm}
+
+\normalsize
+Master Project Report
+
+\vspace{1.5cm}
+
+Submitted by\\
+\textbf{\AuthorName}
+
+\vspace{1cm}
+
+Supervisor:\\
+\textbf{\SupervisorName}
+
+\vspace{1cm}
+
+\UniversityName\\
+\ProgramName
+
+\vfill
+
+\today
+\end{center}
+\end{titlepage}
+
+% -----------------------------
+% ABSTRACT
+% -----------------------------
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+Online customer reviews contain valuable operational signals, but their unstructured nature makes it hard for restaurant owners to translate feedback into concrete improvements.
+This project develops a reproducible analytics pipeline that combines (1) classical sentiment analysis (VADER) with (2) controlled large language model (LLM) extraction and summarization running locally via Ollama.
+The system transforms raw review text into structured insights across three operational areas: \textit{Kitchen}, \textit{Service}, and \textit{Management}. It generates weekly owner-ready emails with evidence quotes, KPI suggestions, and prioritized actions (7-day quick wins and 30-day improvements), plus charts and structured exports (CSV/JSON).
+
+Within RAMI 4.0, the solution is positioned as a \textbf{Functional Layer} capability that consumes review data (Information Layer) and supports managerial decision-making (Business Layer).
+While the case study focuses on a quick-service restaurant dataset, the architecture generalizes to competitor benchmarking and to other product- and service-based companies that rely on customer feedback.
+
+% -----------------------------
+% TABLE OF CONTENTS
+% -----------------------------
+\tableofcontents
+\clearpage
+
+% =========================================================
+\chapter{Introduction}
+% =========================================================
+
+Customer opinions are increasingly communicated through online review platforms and delivery applications.
+For quick-service restaurants, these reviews are one of the fastest indicators of operational performance---often faster than internal KPIs.
+However, review data is largely unstructured, multilingual, and noisy.
+Managers therefore fall back to coarse indicators (average star rating) that rarely explain \textit{why} customers are unhappy, \textit{where} problems occur, and \textit{what} should be done next.
+
+This project aims to bridge that gap by building a practical tool that turns raw reviews into an owner-oriented performance summary.
+The system was developed end-to-end: data ingestion, preprocessing, sentiment scoring, LLM-based fact extraction, themed summarization, visualization, and automated email delivery.
+
+\section{Project goals}
+The main goals are:
+\begin{itemize}[nosep]
+  \item Create a reproducible pipeline that converts unstructured reviews into structured insights.
+  \item Combine interpretable sentiment scoring (VADER) with \textbf{controlled} LLM extraction (JSON outputs + evidence-only rules).
+  \item Deliver a compact weekly owner email with prioritized actions and suggested KPIs.
+  \item Ensure privacy and controllability by running the LLM locally (\ModelName).
+  \item Provide a product-like deliverable (README, configuration, modular code, and report).
+\end{itemize}
+
+\section{Generalization beyond restaurants}
+Although the reference dataset contains restaurant reviews, the approach extends to:
+\begin{itemize}[nosep]
+  \item competitor benchmarking (compare strengths/weaknesses across brands)
+  \item retail products (reviews about durability, delivery, pricing)
+  \item SaaS products (feature requests, UX issues, support quality)
+  \item any customer-feedback-heavy domain requiring systematic evidence-based summaries
+\end{itemize}
+
+% =========================================================
+\chapter{Background and Motivation}
+% =========================================================
+
+In highly competitive markets, customer satisfaction is a leading indicator of future revenue.
+Small service failures---long wait times, incorrect orders, hygiene issues---can quickly surface in reviews and impact reputation.
+However, organizations often lack tools that can systematically extract operational meaning from large volumes of text.
+
+The motivation for this work is practical: provide a tool that a restaurant owner can run weekly, receive a clear summary, and implement changes.
+At the same time, the project aims to demonstrate how a hybrid approach (classical NLP + LLM) can be positioned as a \textit{Functional Layer} capability in RAMI 4.0 for decision support.
+
+% =========================================================
+\chapter{State of the Art in Customer Feedback Analytics}
+% =========================================================
+
+Early review analytics relied on manual reading or keyword counting.
+Automated sentiment analysis later introduced scalable polarity scoring, commonly using:
+\begin{itemize}[nosep]
+  \item lexicon-based models (e.g., VADER)
+  \item machine learning classifiers (requires labeled data)
+  \item aspect-based sentiment (associate sentiment with topics/aspects)
+\end{itemize}
+
+Lexicon methods are fast and interpretable but struggle with context and domain language.
+Aspect-based approaches provide more detail but often need custom topic extraction logic.
+
+Large language models can extract meaning and summarize without task-specific training, but introduce risks:
+\begin{itemize}[nosep]
+  \item hallucination (invented facts)
+  \item inconsistency across runs
+  \item difficulty integrating outputs into structured workflows
+\end{itemize}
+
+This project uses a hybrid strategy:
+VADER provides stable quantitative anchors, while the LLM is used only for \textbf{controlled extraction} and \textbf{structured summarization} with strict JSON constraints and evidence quoting.
+
+% =========================================================
+\chapter{Problem Definition and Use Case}
+% =========================================================
+
+\section{Problem statement}
+Restaurant managers need tools that explain not only whether customers are satisfied, but \textit{why}.
+Star ratings and raw review lists do not provide actionable prioritization, and manual analysis does not scale.
+
+\section{Use case}
+The case study uses German-language reviews from a quick-service restaurant dataset.
+The target user is the restaurant owner of \RestaurantName.
+Inputs arrive as a CSV export from review platforms.
+Outputs are:
+\begin{itemize}[nosep]
+  \item sentiment KPIs and charts
+  \item evidence-based strengths and improvements
+  \item 7-day quick wins and 30-day actions
+  \item a weekly owner email with attachments
+\end{itemize}
+
+\section{RAMI 4.0 positioning}
+The solution is positioned in the \textbf{Functional Layer}:
+\begin{itemize}[nosep]
+  \item \textbf{Information Layer:} review CSV + processed CSV/JSON outputs
+  \item \textbf{Functional Layer:} sentiment scoring + extraction + summarization + KPI computation
+  \item \textbf{Business Layer:} owner decisions (pricing, staffing, training, quality control)
+\end{itemize}
+Functionally, the tool supports condition monitoring of customer perception, diagnosis of root causes through evidence quotes, and improvement planning.
+
+% =========================================================
+\chapter{System Architecture and Design}
+% =========================================================
+
+\section{Architectural objectives}
+\begin{itemize}[nosep]
+  \item \textbf{Modularity:} separate pipeline, email builder, and email sender.
+  \item \textbf{Reproducibility:} per-run output folders and cached progress.
+  \item \textbf{Interpretability:} VADER scores + evidence quotes in summaries.
+  \item \textbf{Privacy/Control:} local LLM via Ollama.
+  \item \textbf{Extensibility:} easy to add languages, data sources, or BI dashboards.
+\end{itemize}
+
+\section{Architecture overview}
+\begin{figure}[H]
+\centering
+\IfFileExists{architecture.png}{
+  \includegraphics[width=0.92\textwidth]{architecture.png}
+}{
+  \fbox{\parbox{0.9\textwidth}{\centering
+  \textit{architecture.png not found. Add a diagram or keep this placeholder.}}}
+}
+\caption{Layered architecture: ingestion $\rightarrow$ preprocessing $\rightarrow$ analytics (VADER) $\rightarrow$ AI extraction (LLM) $\rightarrow$ reporting/email}
+\label{fig:architecture}
+\end{figure}
+
+\section{Run folder strategy (repeatability)}
+Each pipeline execution creates a timestamped folder: \texttt{runs/YYYY-MM-DD\_HHMMSS/}.
+A pointer file (\texttt{runs/last\_run.txt}) stores the most recent run folder so helper scripts can reliably find the correct outputs.
+This design avoided earlier issues where scripts read from different output directories.
+
+\section{Key modules}
+\begin{itemize}[nosep]
+  \item \textbf{Main pipeline:} preprocessing, VADER, strict LLM extraction, charts.
+  \item \textbf{Owner output builder:} transforms \texttt{owner\_summary.json} into a compact email.
+  \item \textbf{Email sender:} reads email text and sends it with attachments via SMTP.
+\end{itemize}
+
+% =========================================================
+\chapter{Analytics Methodology and Knowledge Discovery Process}
+% =========================================================
+
+This project follows the KDD (Knowledge Discovery in Databases) process.
+
+\section{KDD mapping}
+\begin{enumerate}[nosep]
+  \item \textbf{Selection:} choose review text, ratings, timestamps from CSV.
+  \item \textbf{Preprocessing:} cleaning, deduplication, language filtering, date parsing.
+  \item \textbf{Transformation:} compute VADER scores, create evidence lines per review.
+  \item \textbf{Data mining:} extract operational pros/cons (Kitchen/Service/Management) via strict prompts.
+  \item \textbf{Interpretation:} aggregate themes; generate owner summary JSON and email report.
+  \item \textbf{Evaluation:} validate consistency, evidence traceability, and usefulness for decisions.
+\end{enumerate}
+
+\section{Strict prompting strategy}
+To minimize hallucination:
+\begin{itemize}[nosep]
+  \item the LLM is instructed to \textbf{extract only facts present in the review text}
+  \item output format is forced to \textbf{JSON only}
+  \item extraction is split by area (Kitchen/Service/Management) to reduce ambiguity
+  \item evidence quotes are attached to each summary item
+\end{itemize}
+
+% =========================================================
+\chapter{Implementation and Technologies}
+% =========================================================
+
+\section{Technology stack}
+\begin{itemize}[nosep]
+  \item Python (pipeline orchestration)
+  \item Pandas (CSV processing)
+  \item NLTK + VADER (sentiment scoring)
+  \item Matplotlib (charts)
+  \item Ollama local LLM API (\texttt{/api/generate}) for controlled extraction
+  \item SMTP (Gmail) for automated email delivery
+\end{itemize}
+
+\section{Code organization}
+Main scripts:
+\begin{itemize}[nosep]
+  \item \texttt{Project\_Sentiment\_Analysis\_22.12.1.py}: end-to-end pipeline
+  \item \texttt{owner\_outputs.py}: compact owner email builder + flat export
+  \item \texttt{send\_weekly\_report.py}: SMTP sender orchestration
+  \item \texttt{email\_reporter.py}: low-level email attachment sending helper
+\end{itemize}
+
+\section{Practical engineering challenges and fixes}
+During development, several real-world issues appeared:
+\begin{itemize}[nosep]
+  \item \textbf{Inconsistent CSV schemas:} multiple possible column names for date/rating.  
+  \textit{Fix:} auto-detection of common alternatives and safe fallbacks.
+  \item \textbf{Language noise and short reviews:} irrelevant rows degraded results.  
+  \textit{Fix:} minimum text length and optional language filter (\texttt{LANGUAGE=auto|de|en}).
+  \item \textbf{LLM instability and non-JSON replies:} models sometimes return extra text.  
+  \textit{Fix:} strict prompts, \texttt{format=json}, and robust JSON parsing with fallback extraction.
+  \item \textbf{Interrupted runs:} long LLM calls can stop mid-way.  
+  \textit{Fix:} caching (\texttt{cache\_reviews.csv}) and resume logic.
+  \item \textbf{Duplicate output files:} earlier versions produced multiple legacy copies.  
+  \textit{Fix:} canonical filenames only (single set per run folder) + consistent attachment list.
+\end{itemize}
+
+\section{Configuration via \texttt{.env}}
+The application is configured using a simple \texttt{.env} file:
+\begin{lstlisting}
+LLM_URL=http://localhost:11434/api/generate
+MODEL_NAME=phi3.5
+RESTAURANT_NAME=Pizza House
+INPUT_CSV=sample_data/Burger King Data.csv
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=...
+SMTP_PASS=...   # Gmail app password
+OWNER_EMAIL=...
+\end{lstlisting}
+
+% =========================================================
+\chapter{Evaluation and Results}
+% =========================================================
+
+\section{Evaluation approach}
+Evaluation focuses on decision-support value:
+\begin{itemize}[nosep]
+  \item interpretability: are insights traceable to evidence quotes?
+  \item consistency: do repeated runs on the same data produce stable outputs?
+  \item usefulness: are suggested actions and KPIs meaningful for an owner?
+\end{itemize}
+
+\section{Observed outputs}
+The pipeline produces:
+\begin{itemize}[nosep]
+  \item sentiment distributions (bucket counts and star distribution)
+  \item a trend chart (monthly VADER average when dates are available)
+  \item structured owner summary with strengths and prioritized improvements
+\end{itemize}
+
+\section{Example insight categories}
+Across runs, the system consistently organized feedback into:
+\begin{itemize}[nosep]
+  \item \textbf{Kitchen:} quality consistency, temperature, freshness.
+  \item \textbf{Service:} speed, friendliness, order accuracy, cleanliness.
+  \item \textbf{Management:} pricing transparency, ambience, staffing levels.
+\end{itemize}
+
+% =========================================================
+\chapter{Discussion}
+% =========================================================
+
+\section{What worked well}
+\begin{itemize}[nosep]
+  \item Hybrid design anchors qualitative summaries in quantitative sentiment KPIs.
+  \item Evidence quotes increase trust and reduce misinterpretation.
+  \item Local LLM deployment improves privacy and operational controllability.
+\end{itemize}
+
+\section{Limitations}
+\begin{itemize}[nosep]
+  \item VADER can miss sarcasm and domain-specific nuances.
+  \item LLM quality depends on the selected model and available compute.
+  \item Batch design is ideal for weekly reporting but not real-time monitoring.
+\end{itemize}
+
+\section{Extension opportunities}
+\begin{itemize}[nosep]
+  \item competitor benchmarking dashboard (multi-restaurant comparison)
+  \item multilingual support (DE/EN auto summaries)
+  \item integration with BI tools (Grafana/Power BI) using the flat CSV output
+\end{itemize}
+
+% =========================================================
+\chapter{Conclusion and Future Work}
+% =========================================================
+
+This project delivered a product-like analytics tool that turns raw customer reviews into owner-ready insights.
+By combining VADER sentiment scoring with controlled local LLM extraction and strict evidence rules, the solution achieves interpretability and practical decision support.
+The system aligns with RAMI 4.0 as a Functional Layer analytics capability and can generalize beyond restaurants to other customer-feedback-driven domains.
+
+Future work should focus on multi-entity benchmarking, real-time ingestion, and systematic user evaluation with restaurant managers.
+
+% =========================================================
+\appendix
+\chapter{Appendix}
+\section{End-to-end workflow}
+\begin{figure}[H]
+\centering
+\IfFileExists{flowchart.png}{
+  \includegraphics[width=0.85\textwidth]{flowchart.png}
+}{
+  \fbox{\parbox{0.82\textwidth}{\centering
+  \textit{flowchart.png not found. Add a workflow diagram or keep this placeholder.}}}
+}
+\caption{Pipeline flow: load data $\rightarrow$ preprocess $\rightarrow$ VADER $\rightarrow$ LLM extraction $\rightarrow$ summary $\rightarrow$ charts $\rightarrow$ email}
+\label{fig:flowchart}
+\end{figure}
+
+\section{Suggested repository structure}
+\begin{lstlisting}
+restaurant-review-insights/
+  Project_Sentiment_Analysis_22.12.1.py
+  owner_outputs.py
+  send_weekly_report.py
+  email_reporter.py
+  README.md
+  requirements.txt
+  .env.example
+  sample_data/
+    Burger King Data.csv
+  runs/
+    (generated per execution)
+  report/
+    report.tex
+    architecture.png
+    flowchart.png
+\end{lstlisting}
+
+% -----------------------------
+% REFERENCES
+% -----------------------------
+\begin{thebibliography}{9}
+\bibitem{vader}
+Hutto, C. J., \& Gilbert, E. (2014). VADER: A Parsimonious Rule-Based Model for Sentiment Analysis of Social Media Text.
+
+\bibitem{nlp}
+Jurafsky, D., \& Martin, J. H. Speech and Language Processing.
+
+\bibitem{llm}
+Brown, T. et al. (2020). Language Models are Few-Shot Learners.
+\end{thebibliography}
+
+\end{document}
