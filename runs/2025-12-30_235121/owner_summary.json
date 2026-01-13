@@ -1,0 +1,71 @@
+{
+  "headline": "Restaurant-Service und Umfeld Optimierung: Einführung von Quick Wins und Langfriststrategien für Verbesserung basierend auf Feedbackanalyse",
+  "areas_of_excellence": [
+    {
+      "theme": "Freundliche Mitarbeiter",
+      "area": "Service",
+      "what_to_keep": "Von sehr freundlichen Mitarbeitern mit einer nett gesteckten Atmosphäre"
+    },
+    {
+      "theme": "Warmes Ambiente ohne Klimaanlage",
+      "area": "Mgmt|Ambiance",
+      "what_to0: [": "... in einem warmen, einladenden Raum mit wenig oder keiner klimatischen Unterstützung."
+    },
+    {
+      "theme": "Personal-Service",
+      "area": "Service",
+      "what_to_keep": "Das Personal ist sehr freundlich und bemüht"
+    }
+  ],
+  "areas_of_improvement": [
+    {
+      "theme": "Bestellprozess & Essenerlebnis",
+      "area": "Service & Kitchen",
+      "what_to0: ": " Katastrophale Bestallungserfahrungen mit Ratschlägen gegen das Essenbestellen.",
+      "suggested_action": "Implementieren Sie Schulungsprogramme zur Verbesserung der Präzision bei der Bestellabwicklung und verbessern Sie die Kundenkommunikation, um solche Vorfälle zu minimieren."
+    },
+    {
+      "theme": "Geschmack/Präsentation",
+      "area": "Kitchen",
+      "what_to0:": "Unangemessenes Essen mit Schreien über den Geschmack oder Präsentation.",
+      "suggested_action": "Überprüfen und verbessern Sie die Qualitätskontrolle der Küche, um sicherzustellen, dass das Essen sowohl in Geschmack als auch in Aussehen den Erwartungen entspricht."
+    },
+    {
+      "theme": "Outdoor-Bereich",
+      "area": "Mgmt|Ambiance",
+      "what_to0:": "Außenbereich war besetzt und nicht klimatisiert.",
+      "suggested_action": "Einen Plan zur Steuerung der Besucherzahlen im Außenbereich erstellen oder eine Kühlaggregation anschaffen, um die Erfahrung bei heißen Tagen zu verbessern."
+    },
+    {
+      "theme": "Pricing & Qualität des Essens",
+      "area": "Kitchen|Customer Experience|Management",
+      "what_to0:": "Preise sind erschreckend hoch und die Qualität des Essens könnte verbessert werden.",
+      "suggested_action": "Recherchiere, wo das Restaurant seine Preise liegen lässt und überprüfe Lieferanten für besserem Fleischqualitätsstandard",
+      "evidence": "Die Preise haben mich erst einmal geschockt; Hähnchen-Nuggets lauwarm und nicht knusprig"
+    },
+    {
+      "theme": "Menu Variety & Food Presentation",
+      "area": "Kitchen|Customer Experience|Management",
+      "what_to0:": "Fehlende Essensauswahl oder unappetitliche Gerichte.",
+      "suggested_action": "Erweitere das Menü anzubieten und die Ausrichtung der Speisen überprüfen, um sie optisch attraktiver zu präsentieren",
+      "evidence": "Ich glaube die schlechteste BK die habe ich mal gesehen im mein ganzen Leben!"
+    },
+    {
+      "theme": "Service Speed & Gastfreundschaft",
+      "area": "Customer Experience|Management",
+      "what_to0:": "Lange Wartezeiten aufgrund unzureichender Personalunterweisung und Unhöflichkeit des Kundendienstmitarbeiters.",
+      "suggested_action": "'Schulungsprogramme zur Verbesserung der Personalleistungen, Optimierung des Serviceprozesses für schnellere Bearbeitung von Bestellungen sowie Schulung zur verbesserten sozialen Kompetenz und Reaktionsbereitschaft."
+    }
+  ],
+  "quick_wins_next_7_days": [
+    "Implementiere Sofortschulungsprogramme, um die Servicequalität zu steigern"
+  ],
+  "longer_term_30_days": [
+    "Recherchiere und prüfe Lieferanten für besseren Fleischqualitätsstandard",
+    "Erweitere das Menü anzubieten und Präsentation der Speisen verbessern"
+  ],
+  "suggested_kpis": [
+    "Verbesserte Kundenzufriedenheit basierend auf Feedback-Zustimmungraten",
+    "Steigerung des Bestellgeschwindigkes mit reduzierten Wartezeiten"
+  ]
+}

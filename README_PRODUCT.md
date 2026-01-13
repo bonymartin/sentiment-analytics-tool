@@ -3,6 +3,11 @@
 
 **Restaurant Review Insights (RRI)** is a privacy-friendly analytics tool that turns unstructured customer reviews (CSV exports) into **actionable, evidence-based insights** for business owners.
 
+- Course of Studies: **Industrial Informatics (WS 25/26)**
+- Authors:
+  - **Bony Martin** — Matriculation No.: **7026527**
+  - **Bharathraj Govindaraj** — Matriculation No.: **7026834**
+
 It is designed for:
 - **Restaurant owners / managers** (monitor your own performance)
 - **Competitive benchmarking** (compare strengths & weaknesses vs. other brands)
@@ -37,6 +42,12 @@ RRI combines:
 - **Information layer (input)**: raw review text + optional rating + optional timestamp (CSV exports)
 - **Functional layer (processing)**: sentiment scoring, evidence extraction, summarization, KPI suggestions
 - **Business layer (impact)**: owner decisions (quality improvements, staff training, pricing clarity, process changes)
+
+### System Architecture - RAMI 4.0 positioning
+
+![RAMI 4.0 positioning of RRI (Information → Functional → Business layers)](docs/figures/rami_rri_positioning.png)
+
+*Figure: Positionig of the tool  mainly in the Functional Layer (processing/decision-support), consuming review data at the Information Layer and supporting decisions at the Business Layer.*
 
 ---
 
@@ -86,6 +97,9 @@ Folders:
 ---
 
 ## End-to-end workflow
+![RAMI 4.0 positioning of RRI (Information → Functional → Business layers)](docs/figures/flowchart.png)
+
+*Figure: End to end work flow.*
 
 1. **Run the main script**
    - Finds the CSV (auto or `INPUT_CSV`)
@@ -197,15 +211,6 @@ runs/YYYY-MM-DD_HHMMSS/
   chart_trend.png
   last_run.txt  (only in runs/ root)
 ```
-
-### About duplicate “bk_*” files
-For backward compatibility (older script versions), the pipeline may also write:
-- `bk_final_report.csv`, `bk_owner_summary.json`, etc.
-- `chart_1_stars.png`, `chart_2_sentiment_pie.png`, `chart_3_trend.png`
-
-If you want **only one set of outputs**, remove the `bk_*` write lines later as a future improvement. For final submission, keeping both is safe.
-
----
 
 ## Input CSV expectations
 
@@ -330,4 +335,4 @@ For a client-friendly “product” delivery, choose one:
 
 ## Contact / authors
 - **Author:** Bony Martin (Master Project)
-- **Use case:** Restaurant feedback analytics + LLM extraction, RAMI 4.0 Functional Layer tool
+- **Use case:** Restaurant Review analytics + LLM extraction, RAMI 4.0 Functional Layer tool

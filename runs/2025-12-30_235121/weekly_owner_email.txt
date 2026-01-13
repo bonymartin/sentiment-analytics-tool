@@ -1,0 +1,64 @@
+Subject: Weekly Review Summary — Pizza House — 2025-12-31
+
+Restaurant-Service und Umfeld Optimierung: Einführung von Quick Wins und Langfriststrategien für Verbesserung basierend auf Feedbackanalyse — Pizza House
+Model: phi3.5
+Run date: 2025-12-30 23:51
+
+DATA SNAPSHOT
+• Reviews analyzed: 31
+• Overall sentiment (Fused avg): -0.40  (-1 to +1)
+• Sentiment (Fused): Positive=8, Neutral=0, Negative=23
+• Stars: 1★=12, 2★=5, 3★=4, 4★=5, 5★=5
+
+TOP STRENGTHS (keep & promote)
+1. [Service] Freundliche Mitarbeiter
+   Keep: Von sehr freundlichen Mitarbeitern mit einer nett gesteckten Atmosphäre
+   Promote: In Google/Online-Bewertungen hervorheben.
+2. [Mgmt|Ambiance] Warmes Ambiente ohne Klimaanlage
+   Keep: Beibehalten und standardisieren.
+   Promote: In Google/Online-Bewertungen hervorheben.
+3. [Service] Personal-Service
+   Keep: Das Personal ist sehr freundlich und bemüht
+   Promote: In Google/Online-Bewertungen hervorheben.
+
+TOP ISSUES (prioritized)
+1. [Service & Kitchen] Bestellprozess & Essenerlebnis
+   Fix: Problem genauer beschreiben und messen.
+   Action: Implementieren Sie Schulungsprogramme zur Verbesserung der Präzision bei der Bestellabwicklung und verbessern Sie die Kundenkommunikation, um solche Vorfälle zu minimieren.
+2. [Kitchen] Geschmack/Präsentation
+   Fix: Problem genauer beschreiben und messen.
+   Action: Überprüfen und verbessern Sie die Qualitätskontrolle der Küche, um sicherzustellen, dass das Essen sowohl in Geschmack als auch in Aussehen den Erwartungen entspricht.
+3. [Mgmt|Ambiance] Outdoor-Bereich
+   Fix: Problem genauer beschreiben und messen.
+   Action: Einen Plan zur Steuerung der Besucherzahlen im Außenbereich erstellen oder eine Kühlaggregation anschaffen, um die Erfahrung bei heißen Tagen zu verbessern.
+4. [Kitchen|Customer Experience|Management] Pricing & Qualität des Essens
+   Fix: Problem genauer beschreiben und messen.
+   Action: Recherchiere, wo das Restaurant seine Preise liegen lässt und überprüfe Lieferanten für besserem Fleischqualitätsstandard
+   Evidence: "Die Preise haben mich erst einmal geschockt; Hähnchen-Nuggets lauwarm und nicht knusprig"
+5. [Kitchen|Customer Experience|Management] Menu Variety & Food Presentation
+   Fix: Problem genauer beschreiben und messen.
+   Action: Erweitere das Menü anzubieten und die Ausrichtung der Speisen überprüfen, um sie optisch attraktiver zu präsentieren
+   Evidence: "Ich glaube die schlechteste BK die habe ich mal gesehen im mein ganzen Leben!"
+
+RECURRING QUOTES (from extraction)
+• Positive:
+  - "La chica que nos ha atendido (Natalia) ha sido muy paciente con nosotros pese a la diferencia de idioma." (3x)
+  - "Du hast nicht genügend Informationen, um ein kurzes positives Zitat zu extrahieren." (1x)
+  - "sehr schnell zubereitet" (1x)
+• Negative:
+  - "Katastrophen bei der Bestellung und möglicherweise schlechter Geschmack oder Präsentation" (1x)
+  - "Jídlo nedojde celé (Neudefinites Zitat) n/a für Geschmack und Temperatur." (1x)
+  - "Wanted to order only an whopper burger but was not possible without explanation" (1x)
+
+ACTION PLAN
+• Quick wins (next 7 days):
+  - Implementiere Sofortschulungsprogramme, um die Servicequalität zu steigern
+• Longer term (next 30 days):
+  - Recherchiere und prüfe Lieferanten für besseren Fleischqualitätsstandard
+  - Erweitere das Menü anzubieten und Präsentation der Speisen verbessern
+
+KPIs TO TRACK (simple)
+• Verbesserte Kundenzufriedenheit basierend auf Feedback-Zustimmungraten
+• Steigerung des Bestellgeschwindigkes mit reduzierten Wartezeiten
+
+Generated on: 2025-12-31 00:07

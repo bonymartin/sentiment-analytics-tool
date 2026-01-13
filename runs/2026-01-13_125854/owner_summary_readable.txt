@@ -1,0 +1,51 @@
+Subject: Weekly Review Summary — Pizza House — 2026-01-13
+
+Enhancing Restaurant Service Excellence and Improvements — Pizza House
+Model: phi3.5
+Run date: 2026-01-13 12:58
+
+DATA SNAPSHOT
+• Reviews analyzed: 31
+• Overall sentiment (Fused avg): -0.40  (-1 to +1)
+• Sentiment (Fused): Positive=8, Neutral=0, Negative=23
+• Stars: 1★=12, 2★=5, 3★=4, 4★=5, 5★=5
+
+TOP STRENGTHS (keep & promote)
+1. [Kitchen|Service] Service
+   Keep: Freundliche Mitarbeiter und warmes Ambiente in der Küche.
+   Promote: Promote teamwork and a welcoming environment through social media stories or customer testimonials.
+   Evidence: "Sehr freundliche Mitarbeiter"
+2. [Kitchen|Management] Qualität der Küche
+   Keep: Beibehalten und standardisieren.
+   Promote: In Google/Online-Bewertungen hervorheben.
+3. [General] Mannschaftliches Verhalten, Service|Management: Address feedback on staff response to complaints and enhance proactive customer interaction. Use this as case studies or success stories within the restaurant's community platform (
+   Keep: Beibehalten und standardisieren.
+   Promote: In Google/Online-Bewertungen hervorheben.
+
+TOP ISSUES (prioritized)
+• No major repeated issues detected in this run.
+
+RECURRING QUOTES (from extraction)
+• Positive:
+  - "La chica que nos ha atendido (Natalia) ha sido muy paciente con nosotros pese a la diferencia de idioma." (3x)
+  - "Penetrationsgefühl durch Sternbewertung, impliziert ein positives Erlebnis" (1x)
+  - "sehr schnell zubereitet" (1x)
+• Negative:
+  - "Katastrophen bei der Bestellung mit dem Hinweis, dass es nicht empfohlen wird" (1x)
+  - "Kurzes negatives Zitat: 'Weird,' angesichts von Unverständlichkeit bei der Burgerauswahl und fehlender Auswahlbelehrung." (1x)
+  - "Handlungsbedarf bei Kundenandrang und langen Wartezeiten trotz freundlicher Bedienung" (1x)
+
+ACTION PLAN
+• Quick wins (next 7 days):
+  - Standardize one service/kitchen checklist for every shift.
+  - Review top 5 negative reviews with staff and agree on fixes.
+• Longer term (next 30 days):
+  - Reduce repeated complaints by adding process + training + owner checks.
+
+KPIs TO TRACK (simple)
+• Average Wait Time (Min.) — Timer: 20 Bestellungen pro Schicht messen.
+• Order Accuracy (%) — Stichprobe: 30 Bestellungen/Woche prüfen.
+• Food Quality Rating (1–5) — QR-Umfrage auf Bon / Tischaufsteller.
+• Cleanliness Checklist Score — Tägliche Checkliste + wöchentliches Audit.
+
+Generated on: 2026-01-13 13:12
