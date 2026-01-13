@@ -1,0 +1,786 @@
+\documentclass[12pt,a4paper,oneside,openright]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage[nohyperlinks]{acronym}
+
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=8pt,
+  tabsize=2,
+  inputencoding=utf8,
+  extendedchars=true,
+  literate={ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 {Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1 {ß}{{\ss}}1 {–}{{-}}1 {—}{{--}}1 {★}{{*}}1 {•}{{\textbullet}}1 {✅}{{[OK]}}1 {❌}{{[X]}}1,}
+
+\usepackage[
+  backend=biber,
+  style=ieee,
+  sorting=nyt
+]{biblatex}
+\addbibresource{references.bib}
+
+\title{Term paper\\[0.3em]\large Sentiment Analysis}
+\author{Author: \textless Bony Martin, Bharathraj Govindaraj\textgreater\\
+Matriculation No.: \textless 7026527, 7026834 \textgreater\\
+Course of Studies: \textless Industrial Informatics\textgreater\\
+First examiner: Prof.\ Dr.\ Elmar Wings}
+\date{Submission date: \textless 2026-01-08\textgreater}
+
+\begin{document}
+
+\begin{titlepage}
+    
+    \begin{flushleft} 
+        \includegraphics[width=7cm]{report/figures/logo.png}
+    \end{flushleft} 
+    
+    \begin{flushright}
+        \vspace{2cm}
+        \LARGE \textsl{Data Science and Analytics}\\
+        \rule{0.6\textwidth}{0.4pt} ~\\
+        \vspace{0.5cm}
+        \textsf{\LARGE Sentiment Analysis}\\
+    \end{flushright}
+    
+    \vspace{3cm}
+    \large
+    \begin{tabbing}
+        xxxxxxxxxxxxxxxx \= \kill
+        Author 1 : Bony Martin\>  \\
+        Matriculation Number : 7026527\>  \\
+
+        Author 2 : Bharathraj Govindaraj\>  \\
+        Matriculation Number : 7026834  \\
+        Course of Studies: \> Industrial Informatics \\ [0.5cm]
+        Examiners: \> Prof. Dr. Elmar Wings \\
+         \> Prof. Dr. Armando Walter Colombo \\
+        Submission date: \> \today \\
+    \end{tabbing}
+    
+    \vspace{3cm}
+    \small
+    \begin{center}
+        University of Applied Sciences Emden/Leer $\cdot$ 
+        Faculty of Technology $\cdot$ 
+        Electrical Engineering and Computer Science Department \\
+        Constantiaplatz 4 $\cdot$ 
+        26723 Emden $\cdot$ 
+        \url{http://www.hs-emden-leer.de}
+    \end{center}
+    
+\end{titlepage}
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+Customer reviews on platforms such as Google Reviews and delivery apps contain valuable signals about food quality, service performance, and managerial decisions.
+In practice, these signals are often processed manually, which is slow and inconsistent.
+This report documents local-first analytics pipeline that transforms CSV exports of review text into actionable, evidence-based insights for restaurant owners and managers.
+The pipeline performs robust preprocessing (text cleaning, minimum length filtering, deduplication, optional language filtering, date and star parsing), computes baseline sentiment with VADER, and calls a locally hosted large language model (LLM) via an Ollama-compatible endpoint to extract short evidence quotes for \textit{Kitchen}, \textit{Service}, and \textit{Management}.
+To reduce disagreement between lexical sentiment and LLM labels, the implementation combines both signals using a gated fusion strategy and stores intermediate progress in a cache file for reproducibility and resume capability.
+Each run produces a timestamped output folder with a processed dataset, owner summary (JSON and readable text), charts, and an optional weekly email report with deduplicated attachments.
+The system is positioned in the RAMI 4.0 Functional Layer as a decision-support analytics capability.
+The report explains design choices, data and information flow, evaluation approach, and practical limitations, and provides a complete deliverable package for submission.
+
+\hypersetup{pageanchor=false}
+\pagenumbering{roman}
+\tableofcontents
+\listoffigures
+\lstlistoflistings
+
+\chapter*{Acronyms}
+\begin{acronym}[RAMI]
+  \acro{CSV}{Comma-Separated Values}
+  \acro{KDD}{Knowledge Discovery in Databases}
+  \acro{LLM}{Large Language Model}
+  \acro{NLP}{Natural Language Processing}
+  \acro{RAMI}{Reference Architectural Model Industrie 4.0}
+  \acro{RRI}{Restaurant Review Insights}
+  \acro{SMTP}{Simple Mail Transfer Protocol}
+  \acro{VADER}{Valence Aware Dictionary and sEntiment Reasoner}
+  \acro{JSON}{JavaScript Object Notation}
+  \acro{TXT}{TeXT File}
+  \acro{API}{Application Programming Interface}
+  \acro{HTTP}{HyperText Transfer Protocol}
+  \acro{TF-IDF}{Term Frequency-Inverse Document Frequency}
+  \acro{SVM}{Support Vector Machine}
+  \acro{BERT}{Bidirectional Encoder Representations from Transformers}
+  \acro{NLTK}{Natural Language Toolkit}
+  
+  
+\end{acronym}
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+
+% =========================================================
+\chapter{Introduction}
+\section{Use case and motivation}
+This project is part of the practice series of Pizzahaus , a company owned and operated by Mr. Thomas Porrmann.Sentiment analysis provides substantial practical value by transforming large volumes of unstructured textual data into actionable operational insights. In the context of the client’s use case, restaurants receive continuous customer reviews via online platforms, which are typically stored as raw \ac{CSV} exports and remain difficult to evaluate manually over time. Building on established sentiment analysis practices used in industrial and service-oriented environments, this project applies Natural Language Processing (NLP) and text mining techniques to the restaurant domain. The proposed sentiment analysis system automatically analyzes customer reviews to identify sentiment trends, recurring issues, and indicators of customer satisfaction. Feedback is systematically categorized into three operational domains—Kitchen, Service, and Management to ensure relevance for daily restaurant operations. By detecting patterns such as delivery delays, food quality perceptions, or service friendliness, the system supports early identification of improvement opportunities. In addition to sentiment scoring, the proposed solution generates evidence-based insights and visual summaries tailored to restaurant owners. Automated weekly reports distributed via an \ac{SMTP}-configurable email service further enhance accessibility of results. Overall, the system aligns with the client’s use case by enabling data-driven decision-making and continuous quality improvement through scalable sentiment analysis.
+\section{Challenges}
+The practical implementation of this project revealed several challenges and limitations related to data quality, scalability, and model reliability. Customer review data is inherently unstructured, containing mixed languages, typographical errors, duplicates, noise, and highly variable text lengths, which complicates preprocessing and analysis. Additionally, sentiment ambiguity was frequently observed, such as neutral or factual review texts accompanied by strongly positive or negative ratings, which makes a complex sentiment interpretation . From a system perspective, the large volume of review data posed performance constraints during ingestion, as even systems with adequate hardware specifications experienced slowdowns when processing inputs through the language model pipeline.
+\newpage
+Language diversity in the dataset further introduced limitations, particularly when applying classical sentiment analysis methods such as VADER, which primarily support English and, therefore, excluded non-English reviews. Furthermore, passing large amounts of textual data to the Large Language Model (LLM) increased memory usage and led to hallucinated or irrelevant outputs, potentially reducing the trustworthiness of generated insights. To mitigate this issue, a strict operational mode was enforced, constraining the LLM to predefined features and outputs relevant to the project objectives. These challenges highlight the importance of robust preprocessing, language handling, and controlled model behavior when generating reliable evidence-based insights from customer reviews.
+\section{Results produced by the system}
+In one run, the software generates a per-run output folder containing: a processed review table, an owner summary (JSON + readable TXT), three charts (stars, sentiment distribution, monthly sentiment trend), and a weekly email text with attachments.
+\section{Deliverables produced}
+The delivered project package contains:
+\begin{itemize}[itemsep=0.2em]
+  \item \textbf{Report:} \texttt{report/main.tex}, \texttt{report/references.bib}, and the compiled PDF.
+  \item \textbf{Source code:} the complete Python pipeline and helper scripts in \texttt{src/}.
+  \item \textbf{Configuration template:} \texttt{.env.example} to document required environment variables.
+  \item \textbf{Figures:} the architecture diagram and the end-to-end pipeline flowchart used in the report.
+  \item \textbf{SBOM:} \texttt{requirements.txt} listing Python dependencies.
+  \item \textbf{Documentation:} \texttt{README.md} and \texttt{README.txt} describing the repository and how to run it.
+\end{itemize}
+% =========================================================
+\part{Domain Knowledge - Application}
+
+\chapter{Application}
+\section{Knowledge domain}
+The application domain of this project lies within the \textbf{restaurant operations} sector, with a specific focus on the analysis of customer feedback to support operational decision-making. The primary stakeholders include restaurant owners and management, who utilize the derived insights to inform strategic decisions related to pricing, staffing, and overall quality improvements. In addition, kitchen and service teams benefit from actionable, evidence-based feedback that highlights strengths and areas for improvement in food quality, service efficiency, and customer experience. By addressing the needs of both managerial and operational stakeholders, the system supports continuous performance monitoring and data-driven optimization within restaurant environments.
+
+
+\section{State of the art}
+Existing approaches to customer review analysis in the hospitality sector typically include built-in platform dashboards, manual inspection of individual reviews, and cloud-based sentiment analytics services. While platform dashboards provide high-level metrics, they often lack transparency and domain-specific interpretability, whereas manual review reading is time-consuming and does not scale with large volumes of data. Cloud-based sentiment analytics solutions offer advanced processing capabilities but raise concerns related to data privacy, cost, and limited customization. In contrast, the proposed system is positioned as a \textbf{privacy-friendly, locally deployed analytics pipeline} tailored to restaurant operations. It combines classical sentiment analysis with modern language models to balance interpretability and expressiveness. VADER sentiment scoring \cite{hutto2014vader} is employed to generate fast, rule-based baseline sentiment scores that are transparent and suitable for large-scale processing. Complementing this, a locally hosted \ac{LLM} accessed via an Ollama-compatible API is used to extract evidence-based quotations and domain-specific insights across Kitchen, Service, and Management categories. The local deployment ensures that sensitive customer data remains on-premise, addressing privacy and compliance requirements. Furthermore, this hybrid design allows restaurant owners to obtain trustworthy summaries and actionable insights without reliance on external cloud services, positioning as a scalable and cost-effective alternative to existing solutions.
+
+
+\section{What the analytics is doing}
+The proposed system supports \textbf{management and operational decision-making} by systematically consolidating customer feedback into domain-specific themes and actionable weekly insights. It functions as a diagnostic tool by identifying recurring issues such as long waiting times, price–value mismatches, or service-related complaints across large volumes of reviews. In addition, the sentiment analysis system provides optimization support by prioritizing improvement areas based on sentiment trends and evidence extracted directly from customer feedback. This enables managers to focus on high-impact actions supported by concrete examples rather than anecdotal observations. Furthermore, the system facilitates continuous monitoring by tracking sentiment indicators over time, allowing stakeholders to assess the effectiveness of implemented changes. Through this combination of diagnosis, optimization, and monitoring,The proposed system transforms unstructured review data into structured intelligence that supports data-driven restaurant management.
+
+
+\section{Positioning within reference architectures}
+In the project documentation,The sentiment analysis system is positioned within \ac{RAMI} as a \textbf{Functional Layer} capability for customer feedback analytics and decision support.
+The placement in the Functional Layer is justified by the role of the developed system that processes information and provides decision-support services:
+(i) it implements the analytics logic itself (preprocessing, sentiment scoring, \ac{LLM}-based evidence extraction, fusion, summarization, and chart generation), 
+(ii) it exposes a consistent set of outputs (processed dataset, owner summary artifacts, and report email) that can be consumed by humans or downstream tools, and 
+(iii) it remains independent from physical assets and field-level integration, since it operates on exported review data rather than directly controlling or representing an asset in the Asset/Integration layers. 
+Therefore, the developed solution is best described as a functional analytics component with clear inputs and outputs, providing business value through decision support.
+
+% ------------------------------------------------------------
+% System architecture (RAMI 4.0 view)
+% ------------------------------------------------------------
+\section{System architecture (RAMI 4.0 view)}
+
+Figure~\ref{fig:arch} presents a simplified, RAMI 4.0-inspired mapping of the end-to-end analytics workflow. 
+In RAMI 4.0 terms, the \textbf{core product capability} of this project---turning raw customer reviews into structured, actionable insights---is positioned in the \textbf{Functional Layer}. 
+The surrounding boxes in the figure illustrate the adjacent layers that the product \emph{interfaces with}: the \textbf{Information Layer} provides the required input data and configuration (e.g., \texttt{.env} settings and review \ac{CSV} files), while the \textbf{Business Layer} represents how the generated insights are used to support owner/manager decisions (e.g., improvement actions derived from evidence).
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.89
+  \textwidth]{figures/architecture_rami.png}
+  \caption{Simplified RAMI 4.0-inspired architecture mapping: Information inputs $\rightarrow$ Functional analytics (core product) $\rightarrow$ Business usage (decision support).}
+  \label{fig:arch}
+\end{figure}
+
+\noindent The above architecture is intentionally simplified to highlight the relevant RAMI layers for this project; the implemented software module is located in the Functional Layer, while the Information and Business layers indicate the upstream inputs and downstream usage context.
+
+\section{Infrastructure integration}
+\subsection{Data source and execution environment}
+This project does not require dedicated physical hardware sensors. The ``data acquisition'' is performed by importing \ac{CSV} exports of customer reviews. The execution environment is a standard workstation/laptop running Python and (optionally) a local \ac{LLM} runtime. In this sense, the system is designed as a lightweight analytics component that can be executed on commonly available computing devices, without special infrastructure requirements.
+
+\subsection{Data source (review exports)}
+The primary data source for the system consists of customer review exports obtained from online review platforms, typically provided in \ac{CSV} format. At a minimum, the dataset is expected to contain a \texttt{review\_text} column, with optional metadata such as numerical ratings (\texttt{stars}) and timestamps (\texttt{date}). These additional fields enable richer reporting, such as star-distribution summaries and time-based trend analyses. The pipeline also supports flexible input handling by selecting either an explicitly configured \ac{CSV} file or, if not configured, automatically detecting the newest available review export in the project directory.
+
+\subsection{Execution environment}
+The pipeline is implemented in Python and can be executed in a standard local environment, such as a Windows or Linux workstation. Dependencies are managed via a \texttt{requirements.txt} file to support reproducible setup. Outputs are written into a dedicated per-run folder (\texttt{RUN\_DIR}) so that repeated runs remain isolated and comparable, and intermediate cache files allow the pipeline to resume after interruptions without reprocessing already completed reviews.
+
+\subsection{Local LLM endpoint}
+The \ac{LLM} is accessed via an Ollama-compatible endpoint (HTTP POST \texttt{/api/generate}). The software requests strict JSON outputs to reduce parsing ambiguity and to ensure that extracted fields can be consumed deterministically by downstream processing steps. In the implemented workflow, the \ac{LLM} is used to extract domain-oriented evidence (e.g., Kitchen, Service, and Management) and to provide an overall sentiment label, which complements lexicon-based sentiment scoring and supports owner-focused summaries.
+
+\subsection{Major infrastructure requirements for the analytics}
+For reliable operation in a larger infrastructure, the analytics component must satisfy structural, behavioural, functional, and technological requirements to ensure repeatable execution, scalability, and stakeholder trust.
+
+\textbf{Structural requirements.} Configuration must be separated from code: all runtime parameters (input selection, language mode, \ac{LLM} endpoint, SMTP) must be externalized in \texttt{.env} for portability. The run-based folder structure must be preserved for auditability and to prevent output collisions. Interfaces must remain stable through standardized formats (\ac{CSV} for tabular outputs, JSON for structured summaries) to support other scripts and external tools.
+
+\textbf{Behavioural requirements.} The pipeline must be deterministic and resilient to interruptions: resume-safe caching, consistent handling of missing/malformed inputs, and controlled retry logic for \ac{LLM} calls. Logging is required at each major step (input detection, preprocessing, extraction, summarization, chart generation, reporting) for monitoring and troubleshooting. Duplicate work must be avoided by skipping already processed reviews when resuming.
+
+\textbf{Functional requirements.} The system must (i) ingest review data, (ii) clean/normalize text, (iii) compute baseline sentiment (VADER), (iv) extract domain evidence (kitchen, service, management) using an \ac{LLM} with strict JSON constraints, (v) aggregate into owner-ready summaries, and (vi) generate visualizations and reporting artifacts. Explainability is required: insights must remain traceable to review evidence so users can verify conclusions.
+
+\textbf{Technological requirements.} A Python runtime with required dependencies (Pandas, NLTK, Matplotlib, Requests) is needed. A local \ac{LLM} runtime must be reachable via HTTP for AI processing. Outbound SMTP connectivity must be available for automated reporting. Adequate compute is required for repeated \ac{LLM} calls; model size and inference speed must match latency/hardware/cost constraints, hence the use of a smaller local model for practical weekly reporting.
+% =========================================================
+\part{Domain Knowledge - Machine Learning/Algorithms}
+
+\chapter{Algorithms and method selection}
+
+\section{Alternative approaches (overview)}
+Several method families can be used for sentiment analysis on review text, each with different trade-offs in accuracy, interpretability, and operational effort. \textbf{Lexicon-based sentiment} (e.g., VADER) is fast, interpretable, and requires no training data, but it is limited for complex context or domain-specific phrasing. \cite{hutto2014vader} \textbf{Classical supervised ML} (e.g., TF--IDF + SVM/logistic regression) can perform well with labeled datasets, but it requires training data, feature engineering, and periodic re-training; evidence extraction is not native. \textbf{Transformer classifiers} (e.g., BERT-based models) provide strong contextual understanding, but they have higher compute requirements and are still primarily label-focused unless combined with additional explainability methods. \cite{devlin2019bert} \textbf{\ac{LLM}-based analysis} can provide both sentiment labels and structured evidence, but it must be constrained to prevent hallucinations and to ensure deterministic parsing. \cite{ouyang2022training}
+
+\section{Why hybrid approach was chosen}
+This project uses a hybrid design combining VADER and a locally hosted \ac{LLM}. The selection is motivated by practical requirements of owner-oriented reporting. \textbf{Efficiency and stability:} VADER provides a lightweight baseline signal that is fast to compute and easy to interpret. \cite{hutto2014vader} \textbf{Actionable evidence:} the \ac{LLM} is used to extract short pros/cons evidence grouped into Kitchen, Service, and Management, enabling transparent insights beyond a single sentiment label. \textbf{Local execution:} running the \ac{LLM} locally (Ollama-compatible endpoint) reduces dependency on external cloud services and supports data control. \textbf{Deterministic outputs:} strict JSON constraints reduce ambiguity and allow the pipeline to parse and store extracted evidence reliably.
+
+\section{Baseline sentiment (VADER)}
+VADER returns a \textit{compound} score $v \in [-1,1]$ and is mapped to sentiment buckets using common thresholds: Positive ($v \ge 0.05$), Negative ($v \le -0.05$), otherwise Neutral. \cite{hutto2014vader}
+
+\section{Structured evidence extraction (\ac{LLM})}
+The \ac{LLM} is prompted to extract \textbf{short, direct evidence quotes} from the review text, or return \texttt{n/a} when no relevant information exists. Evidence is structured into three operational domains: Kitchen, Service, and Management. Prompts explicitly restrict the model to the provided review content and instruct it to avoid inventing facts or assumptions. To support automated processing, responses are required in strict JSON format.
+
+\section{Fusion of VADER and \ac{LLM} sentiment}
+To reduce disagreement between lexical sentiment scores and \ac{LLM} predictions, the pipeline employs a \textbf{gated fusion} strategy. If VADER is ``unsure'' (i.e., $|v| < 0.25$), the fusion gives more weight to the \ac{LLM} output (0.25 VADER, 0.75 \ac{LLM}). Otherwise, when VADER shows a stronger sentiment signal, the fusion slightly favors VADER (0.55 VADER, 0.45 \ac{LLM}). The fused score is computed as a weighted sum and then mapped to a final fused label for reporting.
+
+% =========================================================
+\part{Domain Knowledge - Tools}
+
+\chapter{Tools and Libraries}
+
+The product is implemented in Python and combines lightweight data processing, interpretable sentiment scoring, controlled \ac{LLM} extraction, reporting, and optional email delivery. For structured data handling, \textbf{pandas} is used to load review CSV files, clean and filter rows, deduplicate reviews, parse dates, and write outputs such as cached progress files and \texttt{reviews\_processed.csv} \cite{mckinney2010pandas,pandas_cite}. For baseline NLP, \textbf{NLTK} provides the VADER sentiment analyzer and stopword lists \cite{bird2009nltkbook}, enabling a transparent sentiment score (compound) and simple language filtering.
+
+Visual outputs are generated with \textbf{matplotlib}, producing charts for star distribution, sentiment distribution, and monthly sentiment trends. The local \ac{LLM} integration is implemented with \textbf{requests}, calling an Ollama-compatible HTTP endpoint to extract evidence (kitchen/service/management) in strict JSON and to generate an owner summary. Product robustness is supported by Python standard modules such as \texttt{pathlib}/\texttt{os} (paths and run folders), \texttt{json}/\texttt{re} (safe parsing and validation), \texttt{datetime}/\texttt{time} (timestamps and pacing), and \texttt{subprocess} (running helper scripts). For operational delivery, the reporting feature uses \texttt{smtplib} and \texttt{EmailMessage} to send an email with deduplicated attachments, configured via \texttt{.env}.
+
+% =========================================================
+\part{Methodology and Development}
+
+\chapter{KDD process mapping}
+The Knowledge Discovery in Databases (KDD) framing is applied to the review analytics pipeline to describe how raw customer feedback is transformed into actionable outputs. The overall steps follow the classical KDD stages: selecting the data source, preparing and cleaning the data, transforming it into analysis-ready form, performing the core analytics, and validating the produced results. \cite{fayyad1996kdd}
+
+\section{KDD mapping overview}
+Figure~\ref{fig:kdd-mapping} summarizes how the implemented pipeline aligns with the KDD stages.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\textwidth]{figures/kdd_mapping.png}
+  \caption{KDD mapping of the review analytics pipeline.}
+  \label{fig:kdd-mapping}
+\end{figure}
+\newpage
+
+\section{Data selection and database representation}
+The pipeline takes an input \ac{CSV} file containing customer review text and optional metadata such as star ratings and timestamps. The input selection is deterministic: if \texttt{INPUT\_CSV} is provided via the \texttt{.env} configuration file, that file is used; otherwise, the pipeline automatically selects the newest \texttt{*.csv} file in the project folder while excluding known output files (e.g., cache and processed CSVs). This approach supports both controlled experiments (fixed input) and practical operation (latest export) without changing the code.{Data selection and database representation}
+
+\subsection{Input data}
+The primary input to the pipeline is a \ac{CSV} export containing customer review text and, when available, metadata such as star ratings and timestamps. In the implementation, the review text column is treated as mandatory because it is required for both VADER scoring and \ac{LLM}-based evidence extraction. Ratings and timestamps are optional; however, when present they enable additional outputs such as star-distribution charts and time-based trend analysis. The main script supports two selection modes in order to cover both reproducible experiments and practical day-to-day usage:
+\begin{itemize}[itemsep=0.2em]
+  \item \textbf{Explicit input:} via the environment variable \texttt{INPUT\_CSV}. This mode is used when a specific dataset must be processed (e.g., for controlled evaluation, debugging, or reporting).
+  \item \textbf{Auto-detection:} the newest \texttt{*.csv} file in the project directory is selected (excluding known output names). This mode supports quick operation when new exports are placed in the project folder, without requiring code changes.
+\end{itemize}
+In both modes, the selected \ac{CSV} is loaded using \texttt{pandas}, and the pipeline validates the required columns. If the input uses different column names for review text, rating, or date, the implementation applies a column-detection and renaming step so that downstream processing consistently operates on the expected internal column names.
+
+\subsection{Data representation}
+The pipeline preserves the original review rows and extends the dataset with derived attributes that are produced during preprocessing, sentiment scoring, and extraction. This enriched representation is written to a processed output \ac{CSV} and is designed to support both quantitative reporting (scores, distributions, trends) and qualitative reporting (evidence quotes that justify the summary). The derived attributes include:
+\begin{itemize}[itemsep=0.2em]
+  \item \textbf{Cleaned review text:} a normalized version of the raw review text (e.g., whitespace normalization and removal of invalid placeholders) that is used consistently for scoring and extraction.
+  \item \textbf{Parsed date and star ratings:} timestamps are parsed from mixed formats into a consistent date representation for aggregation, and star ratings are normalized to integer values on the 1--5 scale.
+  \item \textbf{VADER sentiment signal:} the VADER compound score and a mapped bucket label (Positive/Neutral/Negative) based on defined thresholds.
+  \item \textbf{\ac{LLM} evidence fields per domain:} structured pros/cons evidence extracted for Kitchen, Service, and Management, alongside an overall sentiment label and confidence returned by the \ac{LLM} using strict JSON outputs.
+  \item \textbf{Fused score and label:} a combined sentiment result that integrates the lexicon-based VADER signal with the \ac{LLM}-derived label/confidence, producing a final fused score and fused label for reporting.
+\end{itemize}
+In addition to the processed dataset, the system generates owner-oriented outputs where the extracted evidence is consolidated into themes and transformed into a structured owner summary (\texttt{owner\_summary.json}) as well as a human-readable text version.
+\subsection{Outputs and storage}
+All outputs are written into a dedicated per-run folder to keep executions isolated and comparable. In the implementation, each pipeline execution creates a timestamped run directory under \texttt{runs/}, and the path of the most recent run is recorded in \texttt{runs/last\_run.txt}. This approach ensures that helper scripts (such as email delivery) can reliably locate the latest artifacts without manual configuration.
+The run folder acts as a lightweight ``experiment record'' containing(reviews processed.csv, owner summary.json, owner summary readable.txt, three chart PNG files, and weekly email text. To support robustness and resume behavior on larger datasets, the pipeline also maintains a cache file (\texttt{cache\_reviews.csv}) that stores intermediate processing results. This structure improves traceability (it is clear which run produced which artifacts), supports reproducibility by preserving run outputs, and avoids accidental overwriting when the pipeline is executed repeatedly during development or routine reporting.
+
+\section{Data preparation}
+Before analytics, the pipeline performs data preparation to improve robustness and to reduce noise. Review text is cleaned by normalizing whitespace and removing empty or very short reviews according to a minimum text length threshold. Duplicate reviews are removed to avoid bias in sentiment distribution and downstream summaries. When enabled, a lightweight language filter (auto/de/en) keeps the review set consistent for the selected analysis language. Star values are validated and clamped to the supported scale of 1--5 stars, ensuring that invalid entries do not distort star distribution statistics or trend plots.
+
+\section{Data transformation}
+For trend analysis and reproducibility, the pipeline normalizes key fields into consistent internal representations. Date values are parsed from mixed formats and converted into a uniform \texttt{date} field used for monthly aggregation and chart generation. In addition, review text is normalized prior to scoring and \ac{LLM}-based extraction so that sentiment scoring and evidence extraction operate on comparable text input across the dataset.The data transformation step converts raw review exports into a consistent, analysis-ready format so that scoring, extraction, charts, and summaries behave reliably across different \ac{CSV} sources. 
+
+\subsection{Schema validation and column normalization}
+Before transforming values, the pipeline validates the incoming \ac{CSV} schema and ensures that the required fields are available. Review exports from different platforms may use different column names (e.g., different names for review text, rating, or timestamp). Therefore, the pipeline performs a column-detection and renaming step to map the source columns into consistent internal field names. This normalization prevents errors in later stages and allows the same pipeline to run across multiple datasets without manual edits.
+
+\subsection{Review text normalization and filtering}
+The review text is transformed into a consistent representation for both VADER scoring and \ac{LLM}-based extraction. Text normalization includes trimming leading and trailing whitespace, collapsing repeated whitespace, and removing invalid placeholders (for example, the literal string \texttt{nan} or empty strings). To reduce noise and avoid unstable scoring on extremely short inputs, the pipeline filters very short reviews using the configured threshold \texttt{MIN\_TEXT\_LEN}. These transformations ensure that sentiment scoring and evidence extraction operate on comparable, meaningful inputs across the dataset.
+
+\subsection{Duplicate handling}
+To prevent repeated entries from biasing distributions, trends, and the owner summary, the pipeline removes duplicate reviews. Deduplication is performed using the normalized review text, ensuring that small whitespace differences do not allow the same review to appear multiple times. This step improves the reliability of aggregated results, especially when exports contain repeated rows or when review sources are merged.
+
+\subsection{Date parsing and time normalization}
+For trend computations, the pipeline transforms the timestamp column into a normalized datetime representation. Review datasets often contain mixed date formats; the implementation applies robust parsing to handle these variations and then derives a consistent date field used for monthly aggregation and visualization. When dates are missing or cannot be parsed reliably, the pipeline still produces non-temporal outputs (processed dataset, sentiment distribution, and owner summary), while time-series charts are limited to reviews with valid timestamps. This design avoids failing the full run due to partial timestamp quality.
+
+\subsection{Star rating normalization}
+When star ratings are present, values are converted to numeric form and normalized to the valid 1--5 range by clamping out-of-range values. This transformation ensures consistent star distributions and prevents invalid inputs from distorting reporting. Star ratings are treated as metadata for visualization and descriptive statistics; they are not used as evidence sources for \ac{LLM} extraction.
+
+\subsection{Language and label normalization}
+The pipeline supports optional language filtering (\texttt{LANGUAGE=de/en/auto}) so that scoring and extraction can be aligned to the chosen analysis language. In addition, outputs produced by the \ac{LLM} are normalized before fusion and reporting. In practice, \ac{LLM} responses may contain small variations in label spelling or language; therefore, the pipeline maps \ac{LLM}-returned sentiment labels into a consistent internal vocabulary. This prevents aggregation errors and ensures that the fused label and downstream charts use stable categories across runs.
+
+Overall, the data transformation stage ensures that the dataset entering the data mining loop is clean, standardized, and traceable. It reduces avoidable variability caused by export differences (schema, date format, duplicates) and stabilizes the input space for both lexicon-based scoring and \ac{LLM}-based extraction.
+
+\section{Data mining}
+The core analytics step computes sentiment signals and structured evidence from each review. First, a VADER compound score is computed and mapped to a coarse sentiment bucket (Positive/Neutral/Negative) using standard VADER thresholds. \cite{hutto2014vader} In parallel, the \ac{LLM} produces a sentiment label with confidence and extracts short evidence quotes grouped by domain (Kitchen, Service, Management). The \ac{LLM} label is mapped to a numeric score and combined with VADER through a gated fusion strategy to obtain a fused score and fused label. This hybrid design aims to preserve the speed and interpretability of lexicon-based scoring while adding structured, domain-specific evidence extraction for owner-oriented reporting.
+
+Data mining is implemented as a per-review processing loop that combines a fast baseline sentiment method with structured evidence extraction. For each review, the pipeline first applies lexicon-based sentiment scoring (VADER) and then queries a local Ollama-compatible \ac{LLM} to extract domain evidence and an overall sentiment label. The loop is executed inside a run-scoped folder (\texttt{RUN\_DIR}), and all intermediate and final artifacts are written there to ensure traceability across executions.
+
+\subsection{VADER scoring}
+After preprocessing, the cleaned review text is passed to VADER to compute the \textit{compound} sentiment score. The compound score is mapped into a bucket label (Positive/Neutral/Negative) using the thresholds defined in the algorithms chapter. Both the numeric score and the bucket label are stored in the processed dataset because they are used in multiple later stages: (i) aggregations for sentiment distribution, (ii) comparisons against \ac{LLM}-based labels, and (iii) as one input for the fusion mechanism.
+
+\subsection{\ac{LLM} extraction (strict JSON)}
+In parallel to VADER scoring, the pipeline queries a local \ac{LLM} through an Ollama-compatible HTTP endpoint. The \ac{LLM} is used to produce owner-oriented structured signals that are not available from VADER alone.
+\newpage
+For each review, the extraction step returns domain-specific evidence in a consistent schema:
+\begin{itemize}[itemsep=0.2em]
+  \item \textbf{Kitchen:} short pros/cons evidence (or \texttt{n/a}),
+  \item \textbf{Service:} short pros/cons evidence (or \texttt{n/a}),
+  \item \textbf{Management:} short pros/cons evidence (or \texttt{n/a}),
+  \item \textbf{Overall sentiment label:} Positive/Neutral/Negative (with confidence if available).
+\end{itemize}
+To ensure deterministic parsing, the prompts enforce strict JSON output. The pipeline parses the JSON response and writes the extracted fields into structured columns in the processed dataset. If strict parsing fails, a fallback parsing strategy is applied so that essential fields can still be recovered and the run can continue without losing the review-level output. This design choice is important for robustness because \ac{LLM} responses can occasionally deviate from the expected format.
+
+\subsection{Fusion of VADER and \ac{LLM} signals}
+To obtain a single decision-oriented sentiment result, the pipeline combines the VADER score with the \ac{LLM}-derived sentiment signal into a fused score and fused label. The fusion is implemented as a gated weighting scheme: when VADER is close to neutral (low absolute magnitude), the pipeline assigns higher weight to the \ac{LLM}; otherwise, the fusion slightly favors VADER. The fused score is written to the processed dataset together with the fused label used in reporting and visualization. This step reduces instability in borderline cases while preserving the interpretability of the baseline signal.
+
+\begin{lstlisting}[caption={Simplified fused sentiment logic (from the implementation)},label={lst:fuse}]
+if abs(vader) < gate:
+    w_v, w_l = 0.25, 0.75
+else:
+    w_v, w_l = 0.55, 0.45
+fused_score = (w_v * vader) + (w_l * llm_score)
+\end{lstlisting}
+
+\subsection{Resume-safe caching and run continuity}
+To support long runs and larger datasets, intermediate results are written periodically into \texttt{cache\_reviews.csv} inside the run folder. The cache stores already processed review indices and their computed fields (VADER results, \ac{LLM} extractions, and fused values). When the pipeline is restarted, it detects the cache and skips previously processed entries, continuing from the last completed index. This reduces re-processing time and makes the system robust against interruptions (e.g., system restarts or temporary \ac{LLM} unavailability) while keeping outputs consistent across repeated executions.
+\newpage
+\subsection{Consolidation of outputs for downstream stages}
+After all reviews are processed, the pipeline consolidates the accumulated review-level results into the final processed dataset (e.g., \texttt{reviews\_processed.csv}, and compatibility variants when enabled). These outputs are then consumed by subsequent stages of the product:
+\begin{itemize}[itemsep=0.2em]
+  \item \textbf{Owner summary generation:} evidence lines are selected and summarized into \texttt{owner\_summary.json} and a readable text version,
+  \item \textbf{Chart creation:} star distribution, sentiment distribution, and (if dates exist) trend charts are generated,
+  \item \textbf{Email reporting:} helper scripts assemble the email body and attachments and send the weekly report via SMTP.
+\end{itemize}
+This ensures that the data mining loop not only produces sentiment labels, but also provides the structured evidence and artifacts required for an end-to-end owner-ready reporting workflow.
+
+% =========================================================
+\part{Development to Deployment}
+
+\chapter{Implementation Framework }
+\section{Pipeline flow}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.75\textwidth]{figures/flowchart.png}
+  \caption{End-to-end workflow of the review analytics pipeline (created by authors).}
+  \label{fig:flowchart}
+\end{figure}
+\newpage
+Figure~\ref{fig:flowchart} summarizes the end-to-end workflow of the pipeline (one execution run). The workflow is designed as a repeatable run-based process: each execution creates (or reuses) a dedicated run folder so that all generated artifacts (processed data, summaries, charts, and email outputs) remain grouped and traceable. Input handling is configurable via the \texttt{.env} file and supports both fixed experiments (explicit \texttt{INPUT\_CSV}) and practical usage (automatic selection of the newest available dataset). 
+
+After loading the dataset, the pipeline performs preprocessing steps such as text normalization, removal of very short entries, deduplication, and parsing of stars and dates. The main analysis then combines lexicon-based sentiment scoring (VADER) with \ac{LLM}-based extraction to derive both quantitative sentiment signals and qualitative evidence quotes in the domains Kitchen, Service, and Management. To improve robustness and reproducibility, intermediate results are written incrementally to cache files so that interrupted runs can resume without reprocessing completed reviews. Finally, the pipeline generates owner-oriented outputs including structured summary files, visualizations, and an email-ready report that can be sent with attachments using the implemented email module.
+\section{Configuration}
+The system is designed to run end-to-end without modifying source code by externalizing all runtime settings into a \texttt{.env} file. This configuration layer defines the business context (e.g., \texttt{RESTAURANT\_NAME}), input handling (either a fixed \texttt{INPUT\_CSV} or automatic detection of the most recent suitable CSV in the project folder), and operational constraints such as \texttt{MAX\_REVIEWS}, \texttt{MIN\_TEXT\_LEN}, and optional language filtering (\texttt{LANGUAGE}). The same file also contains the local \ac{LLM} access parameters (\texttt{MODEL\_NAME} and \texttt{LLM\_URL}) to allow switching models or endpoints without code changes. For automated report delivery, SMTP credentials and recipients are configured in \texttt{.env} as well. This separation of configuration from implementation enables reproducible runs across machines, simplifies deployment, and supports quick adaptation to new restaurants or competitor datasets.
+
+\section{Per-run reproducibility}
+Each execution of the main pipeline is treated as an isolated run. A new run directory is created under \texttt{runs/YYYY-MM-DD\_HHMMSS/}, and the path of the latest run is stored in \texttt{runs/last\_run.txt}. This run-based design ensures that outputs from different executions are separated, comparable, and traceable. It also allows helper scripts to reliably locate the newest artifacts without manual path updates.
+
+In addition to isolating outputs, the pipeline supports resume-safe operation through the cache mechanism. Intermediate results are written into \texttt{cache\_reviews.csv} inside the current run folder. If a long run is interrupted (e.g., system restart or temporary \ac{LLM} unavailability), the pipeline can continue from the cached progress and skip already processed reviews, which reduces runtime and prevents duplicate processing.
+\newpage
+\section{Pipeline Execution and Run Folder Management}
+Operation is organized around a per-run output directory concept to ensure traceability and to avoid mixing artifacts from different executions. When the main pipeline starts, it resolves a \texttt{RUN\_DIR} as follows: if \texttt{RUN\_DIR} is already provided as an environment variable, it is reused; otherwise, a new run folder is created under \texttt{runs/} using a timestamp-based name. The selected folder is written to \texttt{runs/last\_run.txt} and exported back to the environment so that all helper scripts work on the same run context. This design guarantees that every run has its own audit trail containing the processed dataset, intermediate cache files, charts, summaries, and the final email body.
+
+After establishing the run folder, the pipeline loads the input CSV, validates required columns, and performs preprocessing (cleaning, duplicate removal, date parsing, star normalization, and optional language filtering). During extraction, results are written repeatedly into a cache file inside the run directory to support recovery if execution is interrupted. Once processing completes, the final processed dataset and all reporting artifacts are produced and stored in the same run directory. The full run folder therefore represents a complete, reproducible snapshot of one execution.
+
+\section{From local development to repeatable execution}
+During development, the project is executed locally as a Python application with dependencies managed via \texttt{requirements.txt}. Configuration is externalized into \texttt{.env} so that environment-specific parameters (e.g., input file, language mode, model endpoint, SMTP settings) can be changed without code modifications. This separation of code and configuration supports a clean transition from development runs to operational runs.
+
+Operational execution is performed by running the main script (pipeline) first and then running helper scripts that convert artifacts into owner-ready deliverables. Since all generated files are written into \texttt{RUN\_DIR}, deployment does not require a database or external storage service. The run folder acts as a lightweight execution record and can be archived or shared as a complete result package.
+\newpage
+\section{Owner-facing artifacts}
+After the pipeline finishes, helper scripts convert the structured outputs into owner-facing deliverables. In particular, the JSON owner summary and the processed \ac{CSV} are transformed into formats that are directly usable by non-technical stakeholders and business tools:
+\begin{itemize}[itemsep=0.2em]
+  \item a readable owner summary text (\texttt{owner\_summary\_readable.txt}) that highlights key themes and actions,
+  \item a flattened summary \ac{CSV} (\texttt{owner\_summary\_flat.csv}) suitable for BI tools or spreadsheet workflows,
+  \item and an email body text (\texttt{weekly\_owner\_email.txt}) used for weekly reporting.
+\end{itemize}
+Along with these deliverables, the run includes chart images (stars distribution, sentiment distribution, monthly trend) and the full processed dataset (\texttt{reviews\_processed.csv}), enabling owners to both read the summary and verify it against evidence.
+
+\section{Email delivery as deployment step}
+Email delivery is an integral part of the product workflow and supports regular, automated report distribution. The system resolves the latest successful run using \texttt{RUN\_DIR} or \texttt{runs/last\_run.txt} and relies on SMTP configuration provided via \texttt{.env}. At the end of a successful pipeline execution, a prepared email body (\texttt{weekly\_owner\_email.txt}) and all required reporting artifacts, including summaries, charts, and processed \ac{CSV} files, are generated and stored within the run directory to ensure traceability. The \texttt{send\_weekly\_report.py} script then loads SMTP and recipient settings, validates and collects available attachments, and sends one email per configured recipient using the specified SMTP server. This design enables reliable, repeatable weekly reporting with minimal manual intervention while preserving a clear audit trail for each execution.
+
+% =========================================================
+\part{Monitoring}
+
+\chapter{Monitoring}
+Monitoring in this project is designed to ensure operational visibility, traceability, and reproducibility across the entire analytics pipeline. Since the system integrates multiple stages (data loading, preprocessing, sentiment scoring, LLM-based extraction, aggregation, visualization, and email delivery), monitoring must support both technical debugging and business-level auditability. The implemented approach combines console-based observability with a per-run artifact trail, so that every execution can be inspected and reproduced without ambiguity.
+
+\section{Monitoring Goals}
+The monitoring concept follows four main goals. First, the system must remain traceable, meaning it must be possible to identify which input data and configuration produced a given output. Second, the system must be reproducible, such that repeated runs with the same inputs and configuration yield comparable outputs. Third, monitoring must provide strong debuggability, allowing developers to quickly isolate failures in preprocessing, model inference, or reporting. Finally, the monitoring approach must contribute to operational robustness, ensuring that temporary failures do not corrupt results or force a full re-run from scratch.
+
+\section{Runtime Logging and Console Observability}
+The pipeline provides step-by-step runtime observability through structured console output. At startup, the system prints an execution banner containing the restaurant name, the configured model name, and the resolved run folder path. Input resolution is also explicitly logged; the system prints which CSV file was selected, whether it was taken from \texttt{INPUT\_CSV} or detected automatically. During preprocessing, the console output reports the review count after cleaning and filtering steps, which helps verify data quality and ensures that downstream analysis is performed on the intended subset of reviews.
+
+For long-running executions, especially when LLM calls are made repeatedly, progress must be visible. The processing loop provides continuous progress reporting using a progress bar, enabling practical monitoring of runtime behavior and early detection of stalls. After every major stage, the system prints confirmation of saved outputs (processed CSV, owner summary, charts), which allows users to validate the workflow without manually checking intermediate directories.
+
+\section{Per-Run Output Folder as Audit Trail}
+A key monitoring feature is the per-run output folder design. Rather than writing outputs into a shared directory where artifacts can be overwritten or mixed, the pipeline creates a unique run directory for each execution. This folder typically follows the naming scheme \texttt{runs/YYYY-MM-DD\_HHMMSS}, and it stores all artifacts generated during the run, including cached intermediate results, processed datasets, charts, owner summaries, and email drafts. In addition, the system writes the latest run folder path into \texttt{runs/last\_run.txt}, allowing helper scripts to consistently locate the correct run outputs. This design acts as an audit trail by preserving the complete artifact set of each run and preventing accidental file duplication across different executions.
+
+\section{Checkpointing and Resume Support}
+A common failure mode in review analytics pipelines is the interruption of long runs, especially when hundreds of LLM calls are made. To prevent wasted runtime and repeated computation, the system implements checkpointing through a cache file stored inside the run folder. During processing, intermediate results are written into \texttt{cache\_reviews.csv} at regular intervals. If a run is restarted, the pipeline checks whether the cache exists and resumes from the last processed review index, skipping already computed items. This monitoring-oriented design improves robustness and allows stable operation even in the presence of temporary crashes, user interruptions, or model service restarts.
+
+\section{Input Validation and Data Quality Monitoring}
+Monitoring also includes safeguards at the data level. Before analysis begins, the pipeline validates that review text content is available by checking the \texttt{review\_text} column and attempting common fallback column names if needed. Ratings are normalized and clamped to a valid 1--5 scale, while timestamps are parsed into standardized date formats. Reviews below a minimum text length are discarded, and duplicates are removed to avoid biased statistics caused by repeated entries in exports. Optional language filtering further improves analytical consistency when the dataset contains multilingual reviews. These checks provide monitoring of input quality and reduce the risk of producing misleading outputs due to malformed or noisy data.
+
+\section{LLM Reliability Monitoring and JSON Safety}
+The LLM integration is the most sensitive part of the system, both in runtime stability and output correctness. For this reason, the pipeline includes explicit reliability monitoring for LLM calls. Each model request is executed with a timeout, preventing indefinite blocking. Failures trigger a retry mechanism with a controlled backoff, and warnings are printed to the console, making failures visible rather than silent. To enforce deterministic integration, the prompts require strict JSON outputs and define narrow extraction scopes (Kitchen, Service, Management, and an overall sentiment label). If the returned output is not valid JSON, the system attempts to recover JSON-like fragments using a parser fallback. This monitoring ensures that downstream aggregation operates on structured, validated data instead of unreliable free-form text.
+
+\section{Artifact Completeness and Output Verification}
+From a monitoring standpoint, a run is considered complete when the expected artifacts exist in the run directory. The system generates a processed dataset (CSV) containing per-review sentiment and extracted evidence fields, a structured owner summary (JSON) and a readable text version, and visualization charts for ratings distribution, sentiment distribution, and time trends. Because these artifacts form a consistent output contract, both developers and client users can validate run success by verifying the presence of the complete artifact set. This also supports operational debugging, as missing artifacts directly indicate which step failed or was skipped.
+
+\section{Email Delivery Monitoring}
+The weekly report delivery is treated as a monitored operational step rather than a side feature. Before sending emails, the script prints the SMTP configuration status and the list of recipients resolved from the environment file. It then lists the attachments found in the run directory, making it transparent what will be delivered to the owner. Emails are sent per recipient, and a success/failure status is printed for each recipient individually. In case of SMTP errors, exceptions are printed to the console and the final return code reflects failure, ensuring that delivery problems are visible and can be acted upon.
+
+\section{Recommended Monitoring Enhancements}
+While the current monitoring approach is suitable for a client-ready prototype, production deployments typically require structured observability beyond console output. A recommended enhancement is writing a structured log file (for example \texttt{run.log}) into each run folder, including timestamps and log levels. Another improvement is generating a \texttt{run\_manifest.json} that records metadata such as model name, input file name, number of reviews processed, and runtime duration. Pre-flight health checks could also improve reliability by verifying that the LLM API is reachable and that SMTP authentication is valid before executing expensive processing steps. Finally, threshold-based warnings and alerting could be added to detect abnormal patterns such as unusually high negative sentiment, excessive review drops during filtering, or a large proportion of missing star ratings.
+
+% =========================================================
+\part{Verification - Evaluation - Conclusion}
+
+\chapter{Evaluation / Verification}
+
+\section{Evaluation Performed and Findings}
+The evaluation of this project focused on verifying that the generated outputs are (1) logically consistent, (2) traceable to the original reviews, and (3) useful for decision-making. The tests were executed directly on the produced pipeline outputs (processed CSV, evidence fields, and owner summary), making the verification reproducible for any new dataset.
+
+\subsection{Star rating vs. sentiment sanity check (Finding)}
+As a first verification, the star ratings (when available) were compared against both sentiment signals (VADER bucket and LLM label). In most cases, low-star reviews aligned with negative sentiment and high-star reviews aligned with positive sentiment, which indicates the pipeline behaves realistically. However, several mismatches were observed. These were not treated as pipeline errors, but as meaningful edge cases:
+
+Some reviews contained mixed feedback (praise + complaints), resulting in neutral or mixed sentiment despite high/medium stars.
+ A few reviews showed rating-text inconsistency (e.g., a higher star rating but strongly negative wording), demonstrating why text-based sentiment adds value beyond star averages.
+
+
+\subsection{Evidence grounding and traceability (Finding)}
+A second verification step validated whether the extracted evidence for \textit{Kitchen, Service, Management} was grounded in the review text. A representative spot-check was performed across positive, neutral, and negative reviews. In the majority of checked cases, the evidence was either an exact phrase from the review or a faithful short excerpt, which supports trust in the reporting layer and owner summary.
+\newpage
+A smaller number of cases required attention:
+ Evidence occasionally became too generic (not clearly tied to a specific phrase).
+   When a review mentioned multiple aspects in one sentence, evidence could be assigned to the wrong category (e.g., service complaint appearing under management).
+
+
+\textbf{Suggestion:} Enforce stricter evidence rules (e.g., ``return a short quote from the review text'') and validate evidence spans by checking that the extracted phrase appears in the source text. Add a fallback that outputs ``N/A'' if the model cannot find direct evidence.
+
+\subsection{Agreement across sentiment signals (Finding)}
+The third verification tested internal agreement between VADER, LLM sentiment label, and the consolidated sentiment used in reporting. Overall agreement was observed frequently, which increases confidence in the final results. Disagreements appeared primarily in predictable scenarios:
+
+Mixed-language reviews or non-English phrasing reduced VADER reliability.
+Reviews with sarcasm, short slang, or weak emotional words sometimes produced different labels across methods.
+ Borderline reviews (balanced pros/cons) often split between neutral and negative depending on the model interpretation.
+
+
+\textbf{Suggestion:} Log and monitor a ``disagreement rate'' over time. If disagreement rises, prioritize (a) language detection/translation, (b) prompt tightening, or (c) upgrading to a stronger model for uncertain cases.
+
+\subsection{Operational robustness checks (Finding)}
+In addition to content correctness, operational behavior was verified through repeated runs using caching/resume outputs. The pipeline produced stable files and consistent aggregation results when re-run on the same input, indicating reproducibility of the processing and reporting flow.
+
+\textbf{Suggestion:} Add schema validation (e.g., JSON Schema) on every LLM response and introduce an automatic repair step for malformed outputs. This would reduce manual intervention and improve unattended runs.
+
+\section{Summary of Improvements for Stronger Verification}
+Based on the above findings, the most impactful next improvements are: Build a small labeled set (100--300 reviews) to compute quantitative accuracy and regression tests. Strengthen grounding: enforce quote-based evidence and validate that evidence exists in the review text.Improve language handling (language detector and optional translation).Optimize prompting and reduce cost/latency by calling the LLM only once per review (single structured extraction request instead of multiple calls).Monitor mismatch and disagreement rates as quality KPIs for production-style deployment.
+
+
+
+\section{Limitations}
+The evaluation must consider the limitations of each component of the pipeline. The VADER sentiment method is lexicon-based, which makes it fast and interpretable, but also sensitive to language and context. It may mis-handle sarcasm, irony, slang, or domain-specific language, and it performs best on English short texts. In multilingual datasets or German-heavy review collections, VADER results can become less reliable without translation or a language-specific sentiment approach.
+
+LLM-based extraction improves semantic understanding and aspect separation, but it introduces its own uncertainties. Output quality depends on the selected local model, the prompt constraints, and the model’s ability to follow strict JSON formatting. Even with strict prompting, occasional formatting errors or overly general responses can occur, and repeated calls across many reviews can amplify runtime and resource constraints.
+
+Language filtering is implemented using heuristics rather than a dedicated language detection library. This is sufficient for medium and long reviews, but very short reviews such as ``Gut'' or ``Nice'' contain too little information to classify reliably. As a result, short reviews may be incorrectly filtered in or out, which can slightly affect sentiment distributions and summary coverage.
+
+```latex
+\chapter{Future Work}
+The current version delivers a stable end-to-end pipeline, but several improvements would strengthen it further for production-like deployment. A practical next step is creating a small gold-standard dataset (e.g., 100--300 manually labeled reviews) for quantitative benchmarking and regression testing when prompts, thresholds, or models change.
+
+Language handling can be improved by replacing heuristic checks with a dedicated language detector and optionally adding translation for mixed German/English datasets. This would make comparisons fairer across restaurants and platforms.
+
+The LLM layer can be optimized in two directions: quality and efficiency. Using a stronger model (or an optional cloud LLM) may improve aspect extraction and sentiment consistency. In parallel, prompt optimization and schema tightening can reduce invalid outputs and improve evidence precision. A key engineering goal is to call the LLM only once per review by merging currently separated extraction steps into a single structured request, reducing latency and cost while simplifying the pipeline.
+
+Finally, the reporting outputs can be extended from periodic emails to continuous monitoring by building a dashboard (e.g., Grafana) that tracks sentiment trends, aspect KPIs, and recurring themes over time, with optional alerts for sudden spikes in negative feedback.
+```
+
+
+\chapter{Conclusion}
+The developed system demonstrates a practical local-first workflow for customer review analytics. It combines an interpretable baseline sentiment method (VADER) with controlled LLM-based evidence extraction and structured summarization. The result is a reproducible pipeline that converts unstructured review text into owner-ready outputs such as processed reports, visual trend charts, and an actionable executive summary grounded in review evidence. This approach supports both self-monitoring of a business and competitive benchmarking, and it can be generalized beyond restaurants to other product- and service-based domains where customer feedback plays a key role in continuous improvement.
+
+% =========================================================
+\part{Appendix}
+
+\appendix
+
+\chapter{Configuration and environment file}
+\section{Purpose of the \texttt{.env} file}
+The project is configured via a \texttt{.env} file placed in the project root.
+This keeps credentials (SMTP) and runtime parameters (LLM endpoint, model name, input CSV) out of the source code and supports reproducible execution across different machines.
+
+\section{Example \texttt{.env} template}
+Listing~\ref{lst:env-example} shows the provided template \texttt{.env.example} (included in the submission package).
+
+\lstinputlisting[caption={Example configuration file (\texttt{.env.example})},label={lst:env-example},language=bash]{../.env.example}
+
+\section{Configuration notes}
+\begin{itemize}[itemsep=0.2em]
+  \item \textbf{Email (SMTP)}: for Gmail, an ``app password'' is typically required (not the normal account password).
+  \item \textbf{Recipients}: use \texttt{OWNER\_EMAIL} for a single recipient or \texttt{OWNER\_EMAILS} for a comma-separated list.
+  \item \textbf{LLM runtime}: \texttt{LLM\_URL} points to the local Ollama-compatible endpoint; \texttt{MODEL\_NAME} selects the model.
+  \item \textbf{Input selection}: set \texttt{INPUT\_CSV} to pin a specific dataset; otherwise the newest CSV is selected automatically.
+\end{itemize}
+
+% ---------------------------------------------------------
+\chapter{Output artifacts and file formats}
+\section{Per-run folder structure}
+Each execution writes to a dedicated run folder: \texttt{runs/YYYY-MM-DD\_HHMMSS/}. A pointer file \texttt{runs/last\_run.txt} stores the latest run path for helper scripts.
+
+\section{Artifacts created in a run}
+Table~\ref{tab:artifacts} summarizes the core artifacts written into the run folder.
+
+\begin{longtable}{ll}
+\caption{Run artifacts and their purpose}\label{tab:artifacts}\\
+\toprule
+File & Purpose \\
+\midrule
+\endfirsthead
+\toprule
+File & Purpose \\
+\midrule
+\endhead
+\texttt{cache\_reviews.csv} & Resume file written during processing (checkpoint every 5 reviews). \\
+\texttt{reviews\_processed.csv} & Final per-review dataset with derived fields (VADER, LLM, fused). \\
+\texttt{owner\_summary.json} & Owner summary (structured JSON) created from evidence lines via LLM. \\
+\texttt{owner\_summary\_readable.txt} & Human-readable representation of the JSON summary. \\
+\texttt{owner\_summary\_flat.csv} & Flattened summary for spreadsheets/BI tools. \\
+\texttt{chart\_stars.png} & Star rating distribution chart. \\
+\texttt{chart\_sentiment\_pie.png} & Sentiment distribution chart (fused labels if available). \\
+\texttt{chart\_trend.png} & Monthly sentiment trend (average score by month). \\
+\texttt{weekly\_owner\_email.txt} & Email body produced by \texttt{owner\_outputs.py}. \\
+\bottomrule
+\end{longtable}
+
+\section{Processed CSV schema (high level)}
+The file \texttt{reviews\_processed.csv} contains both the original review text and derived attributes used for analysis.
+Key columns include:
+\begin{itemize}[itemsep=0.2em]
+  \item identifiers: \texttt{idx}
+  \item metadata: \texttt{date}, \texttt{stars}
+  \item text: \texttt{review\_text}
+  \item VADER: \texttt{vader\_score}, \texttt{sentiment\_bucket}
+  \item LLM sentiment: \texttt{llm\_label}, \texttt{llm\_confidence}, \texttt{llm\_score}
+  \item fusion: \texttt{fused\_label}, \texttt{fused\_score}, \texttt{fused\_w\_vader}, \texttt{fused\_w\_llm}
+  \item evidence fields: \texttt{kitchen\_pros/cons}, \texttt{service\_pros/cons}, \texttt{mgmt\_pros/cons}
+\end{itemize}
+
+\section{Owner summary JSON format}
+The owner summary JSON follows the strict schema defined in the prompt (see Appendix~\ref{app:prompts}).
+Listing~\ref{lst:owner-json} shows an \textit{illustrative} example following the schema (values depend on the dataset).
+
+\begin{lstlisting}[caption={Illustrative owner summary JSON (schema example)},label={lst:owner-json},language=Java]
+{
+  "headline": "Overall feedback is positive with a few recurring issues to address.",
+  "areas_of_excellence": [
+    {
+      "theme": "Fresh taste",
+      "area": "Kitchen",
+      "what_to_keep": "Customers repeatedly praise taste and freshness.",
+      "how_to_market_it": "Highlight signature dishes and freshness in posts.",
+      "evidence": ["\"Very tasty pizza\"", "\"Fresh ingredients\""]
+    }
+  ],
+  "areas_of_improvement": [
+    {
+      "theme": "Waiting time",
+      "area": "Service",
+      "what_to_fix": "Some customers mention long waiting times during peak hours.",
+      "suggested_action": "Add staffing or improve queue handling at peak times.",
+      "evidence": ["\"Waited 40 minutes\"", "\"Service was slow\""]
+    }
+  ],
+  "quick_wins_next_7_days": [
+    "Adjust staffing on peak days.",
+    "Respond to recent negative reviews with concrete actions."
+  ],
+  "longer_term_30_days": [
+    "Review workflow and training for peak-time processes."
+  ],
+  "suggested_kpis": [
+    "Average star rating",
+    "Fused sentiment score trend",
+    "Count of waiting-time complaints"
+  ]
+}
+\end{lstlisting}
+
+\section{Cache files and resume capability}
+The cache file \texttt{cache\_reviews.csv} is a checkpoint written every 5 processed reviews.
+On restart, the pipeline loads the cache and skips already processed indices (\texttt{idx}), enabling:
+\begin{itemize}[itemsep=0.2em]
+  \item safe recovery from interruptions (power loss, network issues),
+  \item incremental processing for large exports,
+  \item reproducible comparison between different runs and models.
+\end{itemize}
+
+\section{Big data handling considerations}
+The current implementation reads the input CSV into memory via \texttt{pandas.read\_csv}, which is sufficient for typical restaurant exports.
+For very large datasets (hundreds of thousands to millions of reviews), the project already includes safeguards (resume cache and \texttt{MAX\_REVIEWS}).
+Further scaling options (future work) include:
+\begin{itemize}[itemsep=0.2em]
+  \item streaming CSV processing via \texttt{chunksize} in \texttt{read\_csv},
+  \item persisting intermediate results in a database (SQLite/PostgreSQL),
+  \item batching LLM calls and applying backpressure based on runtime throughput,
+  \item separating offline processing from report generation.
+\end{itemize}
+
+% ---------------------------------------------------------
+\chapter{LLM prompts, model configuration, and prompt engineering}\label{app:prompts}
+\section{Why strict JSON prompts}
+The pipeline uses ``strict JSON'' prompts to make outputs machine-parsable and to reduce the risk of hallucinated content.
+Hard rules in the prompts include: \textit{do not invent facts}, return only JSON, and use \texttt{n/a} when no evidence exists.
+
+\section{Prompts used in the implementation}
+Listing~\ref{lst:prompts} shows the exact prompt functions used for Kitchen/Service/Management extraction and sentiment labeling.
+
+\lstinputlisting[
+  caption={Prompt functions used for evidence extraction and sentiment labeling (from the main pipeline)},
+  label={lst:prompts},
+  firstline=350,
+  lastline=479
+]{../src/Project_Sentiment_Analysis_22.12.1.py}
+
+\section{Owner summary prompt and schema}
+Listing~\ref{lst:owner-prompt} shows the schema for chunk summaries and the final owner summary.
+
+\lstinputlisting[
+  caption={Owner summary prompts and schema (from the main pipeline)},
+  label={lst:owner-prompt},
+  firstline=480,
+  lastline=560
+]{../src/Project_Sentiment_Analysis_22.12.1.py}
+
+\section{Model selection and evolution}
+The implementation is model-agnostic: the model name is configured via \texttt{MODEL\_NAME} in \texttt{.env}.
+In the submitted configuration template, \texttt{phi3.5} is used as a practical default for local execution.
+When documenting experiments, it is recommended to report:
+\begin{itemize}[itemsep=0.2em]
+  \item which models were tested locally (name and size),
+  \item observed quality of strict JSON compliance,
+  \item runtime and stability (timeouts / retries),
+  \item and qualitative differences in extracted evidence.
+\end{itemize}
+
+% ---------------------------------------------------------
+\chapter{Email reporting and attachments}
+\section{Email generation vs.\ sending}
+Email reporting has two parts:
+\begin{enumerate}[itemsep=0.2em]
+  \item \textbf{Generation}: \texttt{owner\_outputs.py} builds an owner-facing email text file (\texttt{weekly\_owner\_email.txt}) based on \texttt{owner\_summary.json} and the processed dataset.
+  \item \textbf{Sending}: \texttt{send\_weekly\_report.py} reads the email text file and sends it via SMTP, attaching charts and summary files found in the run folder.
+\end{enumerate}
+
+\section{Deduplicated attachments}
+The sending script searches for a fixed set of expected artifact names (charts, summaries, processed CSV, cache) and attaches only those files that exist in the current run folder.
+This avoids duplicated email attachments when legacy filenames are also produced.
+
+% ---------------------------------------------------------
+\chapter{Illustrative output examples}
+The following figures show \textit{possible} outputs produced by the pipeline.
+They are illustrative examples (created by the authors) to demonstrate how the charts and email appear; actual results depend on the input dataset.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{figures/example_chart_stars.png}
+  \caption{Example output: star rating distribution chart (\texttt{chart\_stars.png}).}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.62\textwidth]{figures/example_chart_sentiment_pie.png}
+  \caption{Example output: sentiment pie chart (\texttt{chart\_sentiment\_pie.png}).}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/example_chart_trend.png}
+  \caption{Example output: monthly sentiment trend (\texttt{chart\_trend.png}).}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{figures/example_email.png}
+  \caption{Example output: weekly owner email (generated body + attachments).}
+\end{figure}
+
+% ---------------------------------------------------------
+\chapter{Source code appendix (full listings with explanations)}
+This appendix includes the complete source code used for the product, together with short explanations per file (similar to the ``Package Example'' style in the reference report template).
+
+\section{Main pipeline: \texttt{Project\_Sentiment\_Analysis\_22.12.1.py}}
+\subsection{Description}
+The main script performs the end-to-end processing:
+\begin{itemize}[itemsep=0.2em]
+  \item resolves the run folder and selects the input CSV,
+  \item preprocesses the data (cleaning, filtering, deduplication, parsing stars/dates),
+  \item iterates reviews and extracts evidence with strict JSON prompts (Kitchen/Service/Management) and sentiment labels,
+  \item computes VADER and fused sentiment, writing progress to \texttt{cache\_reviews.csv},
+  \item writes processed outputs, builds owner summary via chunking evidence lines,
+  \item generates charts and prints a terminal summary.
+\end{itemize}
+
+\subsection{Code}
+\lstinputlisting[caption={Full main pipeline script},label={lst:main-code}]{../src/Project_Sentiment_Analysis_22.12.1.py}
+
+\section{Owner outputs: \texttt{owner\_outputs.py}}
+\subsection{Description}
+This script turns run artifacts into owner-facing outputs:
+\begin{itemize}[itemsep=0.2em]
+  \item loads \texttt{owner\_summary.json} and creates a readable text version,
+  \item produces \texttt{owner\_summary\_flat.csv} for BI tools,
+  \item generates \texttt{weekly\_owner\_email.txt} which is later sent by the email script.
+\end{itemize}
+
+\subsection{Code}
+\lstinputlisting[caption={Owner output generation},label={lst:owner-outputs-code}]{../src/owner_outputs.py}
+
+\section{Email sending: \texttt{send\_weekly\_report.py}}
+\subsection{Description}
+This script sends the weekly owner email with attachments:
+\begin{itemize}[itemsep=0.2em]
+  \item reloads environment variables from \texttt{.env},
+  \item resolves the run folder (\texttt{RUN\_DIR} or \texttt{runs/last\_run.txt}),
+  \item loads subject/body from \texttt{weekly\_owner\_email.txt},
+  \item attaches charts and summary files present in the run folder,
+  \item sends the email via SMTP.
+\end{itemize}
+
+\subsection{Code}
+\lstinputlisting[caption={Weekly email sending script},label={lst:send-email-code}]{../src/send_weekly_report.py}
+
+\section{SMTP helper: \texttt{email\_reporter.py}}
+\subsection{Description}
+This module encapsulates the low-level SMTP logic to build and send an email with attachments using Python’s standard library.
+
+\subsection{Code}
+\lstinputlisting[caption={SMTP email helper},label={lst:smtp-code}]{../src/email_reporter.py}
+
+\chapter{Bill of Material (software)}
+\begin{longtable}{ll}
+\toprule
+Component & Purpose \\
+\midrule
+Python 3.10+ & Runtime \\
+pandas & CSV handling and transformations \\
+NLTK (VADER) & Baseline sentiment scoring \\
+matplotlib & Chart generation \\
+requests & HTTP communication with the local LLM endpoint \\
+Ollama & Local LLM runtime providing an API (\texttt{/api/generate}) \\
+phi3.5 (LLM model) & Model used via Ollama for evidence extraction and sentiment labeling \\
+SMTP (Python stdlib) & Email reporting and delivery \\
+\bottomrule
+\end{longtable}
+
+The \texttt{requirements.txt} file in the repository lists the Python dependencies required to run the pipeline.
+
+\printbibliography
+
+\end{document}

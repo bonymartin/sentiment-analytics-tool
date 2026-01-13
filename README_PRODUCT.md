@@ -43,11 +43,11 @@ RRI combines:
 - **Functional layer (processing)**: sentiment scoring, evidence extraction, summarization, KPI suggestions
 - **Business layer (impact)**: owner decisions (quality improvements, staff training, pricing clarity, process changes)
 
-### System Architecture - RAMI 4.0 positioning
+### System Architecture - with RAMI 4.0 positioning.
 
-![RAMI 4.0 positioning of RRI (Information → Functional → Business layers)](docs/figures/rami_rri_positioning.png)
+![RAMI 4.0 positioning of RRI (Information → Functional → Business layers)](docs/figures/System Architecture.png)
 
-*Figure: Positionig of the tool  mainly in the Functional Layer (processing/decision-support), consuming review data at the Information Layer and supporting decisions at the Business Layer.*
+*Figure: Architecture and Positionig of the tool  mainly in the Functional Layer (processing/decision-support), consuming review data at the Information Layer and supporting decisions at the Business Layer.*
 
 ---
 
@@ -97,7 +97,7 @@ Folders:
 ---
 
 ## End-to-end workflow
-![RAMI 4.0 positioning of RRI (Information → Functional → Business layers)](docs/figures/flowchart.png)
+![End to End flow of the project  (Information → Functional → Business layers)](docs/figures/rami_rri_positioning.png)
 
 *Figure: End to end work flow.*
 

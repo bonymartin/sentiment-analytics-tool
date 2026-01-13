@@ -1,0 +1,6 @@
+pandas>=2.0
+nltk>=3.8
+matplotlib>=3.7
+requests>=2.31
+tqdm>=4.66
+PyMuPDF>=1.24
